@@ -27,10 +27,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: #030530;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background: transparent;
+            box-shadow: none;
             z-index: 1000;
             padding: 20px 0;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        header.scrolled {
+            background: #030530;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .header-container {
@@ -44,7 +50,7 @@
         }
 
         .logo {
-            height: 80px;
+            height: 120px;
             text-decoration: none;
             display: inline-block;
         }
@@ -95,9 +101,6 @@
             gap: 8px;
             padding: 8px 16px;
             transition: color 0.3s;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         .menu-btn:hover {
@@ -190,6 +193,12 @@
 
         .hero-section .section-image:first-of-type {
             margin-top: 0;
+        }
+
+        /* 헤더가 투명할 때 히어로 이미지가 헤더 뒤에 보이도록 */
+        .hero-section .section-image.overlay-header {
+            position: relative;
+            z-index: -1;
         }
 
         .section-image {
@@ -926,10 +935,39 @@
         // 스크롤 시 헤더 효과
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            const heroSection = document.querySelector('.hero-section');
+            const headerHeight = header ? header.offsetHeight : 80;
+            const firstPcImage = heroSection ? heroSection.querySelector('.section-image.pc:first-of-type') : null;
+            const firstMobileImage = heroSection ? heroSection.querySelector('.section-image.mobile:first-of-type') : null;
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                if (window.scrollY > 100) {
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                } else {
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
+                }
+                // 헤더가 색상이 있을 때는 오버레이 제거
+                if (firstPcImage) {
+                    firstPcImage.classList.remove('overlay-header');
+                    firstPcImage.style.marginTop = '0';
+                }
+                if (firstMobileImage) {
+                    firstMobileImage.classList.remove('overlay-header');
+                    firstMobileImage.style.marginTop = '0';
+                }
             } else {
-                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                header.classList.remove('scrolled');
+                header.style.boxShadow = 'none';
+                // 헤더가 투명할 때는 오버레이 추가 (헤더 높이만큼 위로 올림)
+                if (firstPcImage) {
+                    firstPcImage.classList.add('overlay-header');
+                    firstPcImage.style.marginTop = '-' + headerHeight + 'px';
+                }
+                if (firstMobileImage) {
+                    firstMobileImage.classList.add('overlay-header');
+                    firstMobileImage.style.marginTop = '-' + headerHeight + 'px';
+                }
             }
         });
 
@@ -963,10 +1001,26 @@
                     heroSection.style.marginTop = headerHeight + 'px';
                     heroSection.style.paddingTop = '0';
                     // 첫 번째 이미지가 헤더 바로 아래에 오도록
-                    const firstImage = heroSection.querySelector('.section-image:first-of-type');
-                    if (firstImage) {
-                        firstImage.style.marginTop = '0';
-                        firstImage.style.paddingTop = '0';
+                    const firstPcImage = heroSection.querySelector('.section-image.pc:first-of-type');
+                    const firstMobileImage = heroSection.querySelector('.section-image.mobile:first-of-type');
+                    
+                    // 헤더가 투명할 때는 오버레이 추가 (헤더 높이만큼 위로 올림)
+                    if (!header.classList.contains('scrolled')) {
+                        if (firstPcImage) {
+                            firstPcImage.classList.add('overlay-header');
+                            firstPcImage.style.marginTop = '-' + headerHeight + 'px';
+                        }
+                        if (firstMobileImage) {
+                            firstMobileImage.classList.add('overlay-header');
+                            firstMobileImage.style.marginTop = '-' + headerHeight + 'px';
+                        }
+                    } else {
+                        if (firstPcImage) {
+                            firstPcImage.style.marginTop = '0';
+                        }
+                        if (firstMobileImage) {
+                            firstMobileImage.style.marginTop = '0';
+                        }
                     }
                 }
             }
