@@ -69,6 +69,13 @@
             font-size: 28px;
             cursor: pointer;
             color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .mobile-menu-btn.dark-bg {
+            background: #0d0d1f;
         }
 
         /* PC 네비게이션 */
@@ -1503,7 +1510,6 @@
             const firstPcImage = heroSection ? heroSection.querySelector('.section-image.pc:first-of-type') : null;
             const firstMobileImage = heroSection ? heroSection.querySelector('.section-image.mobile:first-of-type') : null;
             const menuBtn = document.querySelector('.menu-btn');
-            const consultationSection = document.querySelector('.consultation-section');
             
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -1535,35 +1541,45 @@
                 }
             }
 
-            // 실시간상담신청 또는 문의하기 섹션에 도달했는지 확인 (데스크탑만)
+            // 실시간상담신청 또는 문의하기 섹션에 도달했는지 확인
+            const consultationSection = document.querySelector('.consultation-section');
+            const contactSection = document.querySelector('.contact-section');
+            let shouldAddBg = false;
+            
+            // 실시간상담신청 섹션 확인
+            if (consultationSection) {
+                const consultationTop = consultationSection.getBoundingClientRect().top;
+                const consultationBottom = consultationSection.getBoundingClientRect().bottom;
+                if (consultationTop <= headerHeight && consultationBottom > 0) {
+                    shouldAddBg = true;
+                }
+            }
+            
+            // 문의하기 섹션 확인
+            if (contactSection) {
+                const contactTop = contactSection.getBoundingClientRect().top;
+                const contactBottom = contactSection.getBoundingClientRect().bottom;
+                if (contactTop <= headerHeight && contactBottom > 0) {
+                    shouldAddBg = true;
+                }
+            }
+            
+            // 데스크탑 MENU 버튼
             if (menuBtn && window.innerWidth > 768) {
-                const consultationSection = document.querySelector('.consultation-section');
-                const contactSection = document.querySelector('.contact-section');
-                let shouldAddBg = false;
-                
-                // 실시간상담신청 섹션 확인
-                if (consultationSection) {
-                    const consultationTop = consultationSection.getBoundingClientRect().top;
-                    const consultationBottom = consultationSection.getBoundingClientRect().bottom;
-                    if (consultationTop <= headerHeight && consultationBottom > 0) {
-                        shouldAddBg = true;
-                    }
-                }
-                
-                // 문의하기 섹션 확인
-                if (contactSection) {
-                    const contactTop = contactSection.getBoundingClientRect().top;
-                    const contactBottom = contactSection.getBoundingClientRect().bottom;
-                    if (contactTop <= headerHeight && contactBottom > 0) {
-                        shouldAddBg = true;
-                    }
-                }
-                
-                // 두 섹션 중 하나라도 화면에 보이면 MENU 버튼 배경색 추가
                 if (shouldAddBg) {
                     menuBtn.classList.add('dark-bg');
                 } else {
                     menuBtn.classList.remove('dark-bg');
+                }
+            }
+            
+            // 모바일 메뉴 버튼
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            if (mobileMenuBtn && window.innerWidth <= 768) {
+                if (shouldAddBg) {
+                    mobileMenuBtn.classList.add('dark-bg');
+                } else {
+                    mobileMenuBtn.classList.remove('dark-bg');
                 }
             }
         });
