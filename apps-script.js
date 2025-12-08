@@ -5,6 +5,86 @@ function doGet(e) {
   return ContentService.createTextOutput("pong: " + message);
 }
 
+// 웹에서 폼 데이터를 받아서 시트에 추가하는 함수
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var postData = e.parameter || {};
+    
+    // 현재 시간
+    var timestamp = new Date();
+    
+    // 데이터 배열 (시트 헤더 순서에 맞춤: 제출일시, 이름, 전화번호, 직업, 월소득, 채무금액)
+    var rowData = [
+      timestamp,
+      postData.name || "",
+      postData.phone || "",
+      postData.job || "",
+      postData.income || "",
+      postData.debt || ""
+    ];
+    
+    // 시트에 데이터 추가
+    sheet.appendRow(rowData);
+    
+    // 이메일 전송
+    sendEmailNotification(rowData);
+    
+    // 성공 응답
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: "상담 신청이 완료되었습니다."
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    Logger.log("오류 발생: " + error.toString());
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      error: error.toString()
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// 이메일 알림 전송 함수
+function sendEmailNotification(rowData) {
+  try {
+    var email = "bbong1019@gmail.com";
+    var subject = "[법무법인 파트너] 새 문의가 접수되었습니다";
+    
+    var headers = ["제출일시", "이름", "전화번호", "직업", "월소득", "채무금액"];
+    
+    var bodyLines = [];
+    bodyLines.push("새로운 상담 신청이 접수되었습니다.");
+    bodyLines.push("");
+    bodyLines.push("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    bodyLines.push("");
+    
+    for (var i = 0; i < headers.length && i < rowData.length; i++) {
+      if (rowData[i]) {
+        bodyLines.push(headers[i] + ": " + rowData[i]);
+      }
+    }
+    
+    bodyLines.push("");
+    bodyLines.push("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    bodyLines.push("");
+    bodyLines.push("구글 시트에서 확인: " + SpreadsheetApp.getActiveSpreadsheet().getUrl());
+    
+    var htmlBody = bodyLines.join("<br>");
+    
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      htmlBody: htmlBody
+    });
+    
+    Logger.log("이메일 전송 완료: " + email);
+    
+  } catch (error) {
+    Logger.log("이메일 전송 오류: " + error.toString());
+  }
+}
+
 // 폼 제출 시 자동 실행 (트리거 설정 필요)
 function onFormSubmit(e) {
   try {
