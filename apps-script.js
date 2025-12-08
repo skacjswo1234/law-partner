@@ -80,3 +80,41 @@ function onFormSubmit(e) {
   }
 }
 
+// 시트 헤더 자동 설정 함수 (한 번만 실행하면 됩니다)
+function setupSheetHeaders() {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    
+    // 헤더 배열 (구글 폼은 첫 번째 열에 타임스탬프를 자동으로 넣습니다)
+    var headers = [
+      "제출일시",
+      "이름",
+      "전화번호",
+      "직업",
+      "월소득",
+      "채무금액"
+    ];
+    
+    // 1행에 헤더 설정
+    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+    
+    // 헤더 행 스타일 설정 (선택사항)
+    var headerRange = sheet.getRange(1, 1, 1, headers.length);
+    headerRange.setFontWeight("bold");
+    headerRange.setBackground("#4285f4");
+    headerRange.setFontColor("#ffffff");
+    
+    // 열 너비 자동 조정
+    for (var i = 1; i <= headers.length; i++) {
+      sheet.autoResizeColumn(i);
+    }
+    
+    Logger.log("시트 헤더가 성공적으로 설정되었습니다.");
+    return "시트 헤더 설정 완료!";
+    
+  } catch (error) {
+    Logger.log("오류 발생: " + error.toString());
+    return "오류: " + error.toString();
+  }
+}
+
