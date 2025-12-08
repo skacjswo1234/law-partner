@@ -20,6 +20,7 @@
             font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #0d0d1f;
         }
 
         /* 헤더 */
@@ -35,7 +36,7 @@
         }
 
         header.scrolled {
-            background: #030530;
+            background: transparent;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
@@ -100,11 +101,16 @@
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            transition: color 0.3s;
+            transition: color 0.3s, background 0.3s;
+            border-radius: 5px;
         }
 
         .menu-btn:hover {
             color: rgba(255, 255, 255, 0.8);
+        }
+
+        .menu-btn.dark-bg {
+            background: #0d0d1f;
         }
 
         /* 사이드 메뉴 (모바일 + PC 공통) */
@@ -115,7 +121,7 @@
             width: 80%;
             max-width: 400px;
             height: 100vh;
-            background: #030530;
+            background: #0d0d1f;
             z-index: 2000;
             transition: right 0.3s ease;
             padding: 80px 30px 30px;
@@ -217,10 +223,90 @@
 
         .section-image.pc {
             display: block;
+            max-width: 1400px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
         }
 
         .section-image.mobile {
             display: none;
+        }
+
+        /* 탕감률 섹션 슬라이더 (데스크탑) */
+        .discount-slider-section {
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .discount-slider-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .discount-slider-container {
+            max-width: 1400px;
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .discount-slider-track {
+            display: flex;
+            gap: 20px;
+            animation: slideAuto 15s infinite linear;
+        }
+
+        .discount-slider-track:hover {
+            animation-play-state: paused;
+        }
+
+        .discount-slide {
+            flex: 0 0 calc(33.333% - 14px);
+            min-width: 0;
+        }
+
+        .discount-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .discount-image.pc {
+            display: block;
+        }
+
+        .discount-image.mobile {
+            display: none;
+        }
+
+        @keyframes slideAuto {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-50% - 30px));
+            }
+        }
+
+        /* 모바일 카드 섹션 */
+        .discount-card-section {
+            display: none;
+            background-color: #0d0d1f;
+            padding: 20px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .discount-slider-section.animate .discount-card-section {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* 실시간 상담신청 영역 */
@@ -429,7 +515,7 @@
 
         /* 푸터 */
         footer {
-            background: #030530;
+            background: #0d0d1f;
             color: white;
             padding: 50px 20px 30px;
             opacity: 0;
@@ -486,18 +572,195 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
-        /* 플로팅 버튼 */
-        .floating-buttons {
+        /* 하단 고정 띠 (데스크탑) */
+        .sticky-bar {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 999;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #0d0d1f;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            padding: 15px 0;
+            display: none;
+        }
+
+        .sticky-bar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sticky-bar-wrapper {
             display: flex;
+            align-items: center;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .sticky-bar-icon {
+            flex-shrink: 0;
+        }
+
+        .sticky-bar-icon img {
+            height: 80px;
+            width: auto;
+        }
+
+        .sticky-bar-form {
+            flex: 1.5;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sticky-bar-title {
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+
+        .sticky-bar-inputs {
+            display: flex;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .sticky-bar-input-row {
+            flex: 1;
+        }
+
+        .sticky-bar-input-row input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            font-size: 15px;
+            font-family: inherit;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            min-height: 48px;
+        }
+
+        .sticky-bar-input-row input:focus {
+            outline: none;
+            border-color: #FFD700;
+            background: white;
+        }
+
+        .sticky-bar-input-row input::placeholder {
+            color: #999;
+        }
+
+        .sticky-bar-button-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .sticky-bar-privacy {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .sticky-bar-privacy input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+        }
+
+        .sticky-bar-submit-btn {
+            padding: 12px 30px;
+            background: #FFD700;
+            color: #0d0d1f;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .sticky-bar-submit-btn:hover {
+            background: #FFA500;
+        }
+
+        .sticky-bar-contact {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 1;
+        }
+
+        .sticky-bar-call {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sticky-bar-call-title {
+            font-size: 14px;
+            font-weight: 400;
+            color: white;
+            line-height: 1.4;
+        }
+
+        .sticky-bar-call-info {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .sticky-bar-call-info b {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .sticky-bar-kakao {
+            display: flex;
+            align-items: center;
+        }
+
+        .sticky-bar-kakao-btn {
+            padding: 10px 20px;
+            background: #FEE500;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+            line-height: 1.4;
+            text-shadow: none;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+        }
+
+        .sticky-bar-kakao-btn:hover {
+            background: #FDD835;
+        }
+
+        /* 띠지 위 아이콘 (TOP, 전화) */
+        .sticky-bar-icons {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            z-index: 1001;
+            display: none;
             flex-direction: column;
             gap: 15px;
         }
 
-        .floating-btn {
+        .sticky-bar-icon-btn {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -513,29 +776,57 @@
             text-decoration: none;
         }
 
-        .floating-btn:hover {
+        .sticky-bar-icon-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
         }
 
-        .floating-btn.top {
-            background: linear-gradient(135deg, #030530 0%, #040638 100%);
+        .sticky-bar-icon-btn.top {
+            background: linear-gradient(135deg, #0d0d1f 0%, #1a1a3a 100%);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-        .floating-btn.phone {
+        .sticky-bar-icon-btn.top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sticky-bar-icon-btn.phone {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
         }
 
-        .floating-btn.kakao {
-            background: linear-gradient(135deg, #FEE500 0%, #FDD835 100%);
-            color: #3C1E1E;
+        /* 모바일 하단 띠지 (기본 숨김) */
+        .mobile-sticky-bar {
+            display: none;
         }
 
-        .floating-btn.instagram {
-            background: linear-gradient(135deg, #E4405F 0%, #C13584 50%, #833AB4 100%);
+        .mobile-sticky-bar-icons {
+            display: none;
+        }
+
+        /* 데스크탑에서만 하단 띠 표시 */
+        @media (min-width: 769px) {
+            .sticky-bar {
+                display: block;
+            }
+
+            .sticky-bar-icons {
+                display: flex;
+            }
+
+            .mobile-sticky-bar {
+                display: none !important;
+            }
+
+            .mobile-sticky-bar-icons {
+                display: none !important;
+            }
+
+            footer {
+                padding-bottom: 120px;
+            }
         }
 
         /* 반응형 */
@@ -558,6 +849,44 @@
 
             .section-image.mobile {
                 display: block;
+            }
+
+            /* 모바일 탕감률 카드 섹션 */
+            .discount-slider-container {
+                display: none;
+            }
+
+            .discount-card-section {
+                display: block;
+                background-color: #0d0d1f;
+                padding: 20px 0;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .discount-card-container {
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .discount-card-wrapper {
+                display: flex;
+                transition: transform 0.5s ease;
+            }
+
+            .discount-card {
+                flex: 0 0 100%;
+                width: 100%;
+                padding: 0 15px;
+                box-sizing: border-box;
+            }
+
+            .discount-card-image {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 8px;
             }
 
             .section-title {
@@ -633,16 +962,128 @@
                 margin-top: 5px;
             }
 
-            .floating-buttons {
-                bottom: 20px;
+            .sticky-bar {
+                display: none !important;
+            }
+
+            .sticky-bar-icons {
+                display: none !important;
+            }
+
+            /* 모바일 하단 띠지 */
+            .mobile-sticky-bar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: transparent;
+                z-index: 1000;
+                padding: 0;
+                display: block;
+            }
+
+            .mobile-sticky-bar-container {
+                display: flex;
+                width: 100%;
+                height: 60px;
+            }
+
+            .mobile-sticky-bar-left {
+                flex: 1;
+                background: #FEE500;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0;
+            }
+
+            .mobile-sticky-bar-left a {
+                color: #000000;
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .mobile-sticky-bar-right {
+                flex: 1;
+                background: #0d0d1f;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0;
+            }
+
+            .mobile-sticky-bar-right a {
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                text-decoration: none;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+            }
+
+            /* 모바일 띠지 위 아이콘 */
+            .mobile-sticky-bar-icons {
+                position: fixed;
+                bottom: 70px;
                 right: 20px;
+                z-index: 1001;
+                display: flex;
+                flex-direction: column;
                 gap: 12px;
             }
 
-            .floating-btn {
+            .mobile-sticky-bar-icon-btn {
                 width: 50px;
                 height: 50px;
+                border-radius: 50%;
+                border: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 font-size: 20px;
+                color: white;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                transition: all 0.3s ease;
+                text-decoration: none;
+            }
+
+            .mobile-sticky-bar-icon-btn:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+            }
+
+            .mobile-sticky-bar-icon-btn.top {
+                background: linear-gradient(135deg, #0d0d1f 0%, #1a1a3a 100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+            }
+
+            .mobile-sticky-bar-icon-btn.top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .mobile-sticky-bar-icon-btn.phone {
+                background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            }
+
+            footer {
+                padding-bottom: 60px;
             }
         }
     </style>
@@ -697,12 +1138,55 @@
         <img src="images/mob/h-4-m.png" alt="섹션 4" class="section-image mobile">
         <img src="images/pc/h-5.png" alt="섹션 5" class="section-image pc">
         <img src="images/mob/h-5-m.png" alt="섹션 5" class="section-image mobile">
-        <img src="images/pc/h-6.png" alt="섹션 6" class="section-image pc">
-        <img src="images/mob/h-6-m.png" alt="섹션 6" class="section-image mobile">
-        <img src="images/pc/h-7.png" alt="섹션 7" class="section-image pc">
-        <img src="images/mob/h-7-m.png" alt="섹션 7" class="section-image mobile">
-        <img src="images/pc/h-8.png" alt="섹션 8" class="section-image pc">
-        <img src="images/mob/h-8-m.png" alt="섹션 8" class="section-image mobile">
+        <!-- 탕감률 섹션 슬라이더 -->
+        <div class="discount-slider-section">
+            <!-- 데스크탑 슬라이더 -->
+            <div class="discount-slider-container">
+                <div class="discount-slider-track">
+                    <div class="discount-slide">
+                        <img src="images/pc/h-6.png" alt="탕감률 1" class="discount-image pc">
+                        <img src="images/mob/h-6-m.png" alt="탕감률 1" class="discount-image mobile">
+                    </div>
+                    <div class="discount-slide">
+                        <img src="images/pc/h-7.png" alt="탕감률 2" class="discount-image pc">
+                        <img src="images/mob/h-7-m.png" alt="탕감률 2" class="discount-image mobile">
+                    </div>
+                    <div class="discount-slide">
+                        <img src="images/pc/h-8.png" alt="탕감률 3" class="discount-image pc">
+                        <img src="images/mob/h-8-m.png" alt="탕감률 3" class="discount-image mobile">
+                    </div>
+                    <!-- 무한 반복을 위한 복제본 -->
+                    <div class="discount-slide">
+                        <img src="images/pc/h-6.png" alt="탕감률 1" class="discount-image pc">
+                        <img src="images/mob/h-6-m.png" alt="탕감률 1" class="discount-image mobile">
+                    </div>
+                    <div class="discount-slide">
+                        <img src="images/pc/h-7.png" alt="탕감률 2" class="discount-image pc">
+                        <img src="images/mob/h-7-m.png" alt="탕감률 2" class="discount-image mobile">
+                    </div>
+                    <div class="discount-slide">
+                        <img src="images/pc/h-8.png" alt="탕감률 3" class="discount-image pc">
+                        <img src="images/mob/h-8-m.png" alt="탕감률 3" class="discount-image mobile">
+                    </div>
+                </div>
+            </div>
+            <!-- 모바일 카드 섹션 -->
+            <div class="discount-card-section">
+                <div class="discount-card-container">
+                    <div class="discount-card-wrapper" id="discountCardWrapper">
+                        <div class="discount-card">
+                            <img src="images/mob/h-6-m.png" alt="탕감률 1" class="discount-card-image">
+                        </div>
+                        <div class="discount-card">
+                            <img src="images/mob/h-7-m.png" alt="탕감률 2" class="discount-card-image">
+                        </div>
+                        <div class="discount-card">
+                            <img src="images/mob/h-8-m.png" alt="탕감률 3" class="discount-card-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <img src="images/pc/h-9.png" alt="섹션 9" class="section-image pc">
         <img src="images/mob/h-9-m.png" alt="섹션 9" class="section-image mobile">
         <img src="images/pc/h-10.png" alt="섹션 10" class="section-image pc">
@@ -756,7 +1240,7 @@
                 </div>
                 <div class="footer-section">
                     <h3>연락처</h3>
-                    <p>전화: 02-1234-5678</p>
+                    <p>전화: 010-7231-0459</p>
                     <p>이메일: info@partnerlaw.co.kr</p>
                     <p>주소: 서울특별시 강남구 테헤란로 123</p>
                 </div>
@@ -773,19 +1257,100 @@
         </div>
     </footer>
 
-    <!-- 플로팅 버튼 -->
-    <div class="floating-buttons">
-        <a href="#" class="floating-btn top" onclick="scrollToTop(); return false;" title="맨 위로">
+    <!-- 하단 고정 띠 (데스크탑) -->
+    <div class="sticky-bar">
+        <div class="sticky-bar-container">
+            <div class="sticky-bar-wrapper">
+                <div class="sticky-bar-icon">
+                    <img src="partner-logo.png" alt="법무법인 파트너">
+                </div>
+                <div class="sticky-bar-form">
+                    <div class="sticky-bar-title">
+                        <span>1:1 상담</span><br>
+                        <span>신청하기</span>
+                    </div>
+                    <div class="sticky-bar-inputs">
+                        <div class="sticky-bar-input-row">
+                            <input type="text" id="sticky_name" name="sticky_name" placeholder="이름 입력">
+                        </div>
+                        <div class="sticky-bar-input-row">
+                            <input type="tel" id="sticky_phone" name="sticky_phone" placeholder="전화번호 입력">
+                        </div>
+                        <div class="sticky-bar-input-row">
+                            <input type="text" id="sticky_job" name="sticky_job" placeholder="직업 입력">
+                        </div>
+                        <div class="sticky-bar-input-row">
+                            <input type="text" id="sticky_income" name="sticky_income" placeholder="월소득 입력">
+                        </div>
+                        <div class="sticky-bar-input-row">
+                            <input type="text" id="sticky_debt" name="sticky_debt" placeholder="채무금액 입력">
+                        </div>
+                    </div>
+                    <div class="sticky-bar-button-wrapper">
+                        <div class="sticky-bar-privacy">
+                            <input type="checkbox" id="sticky_privacy" name="sticky_privacy">
+                            <label for="sticky_privacy">정보 수집 동의</label>
+                        </div>
+                        <button type="button" class="sticky-bar-submit-btn" onclick="handleStickySubmit()">상담 신청하기</button>
+                    </div>
+                </div>
+                <div class="sticky-bar-contact">
+                    <div class="sticky-bar-call">
+                        <div class="sticky-bar-call-title">
+                            <span>실시간</span><br>
+                            <span>전화상담</span>
+                        </div>
+                        <div class="sticky-bar-call-info">
+                            <span>평일 오전 9시-오후 6시</span><br>
+                            <b>010-7231-0459</b>
+                        </div>
+                    </div>
+                    <div class="sticky-bar-kakao">
+                        <a href="http://pf.kakao.com/_inbpn/chat" target="_blank" class="sticky-bar-kakao-btn">
+                            <span style="display: block; text-indent: 8px; font-weight: bold;">법무법인파트너</span>
+                            <span style="font-weight: bold;">카톡상담 바로가기 →</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 띠지 위 아이콘 (TOP, 전화) -->
+    <div class="sticky-bar-icons">
+        <a href="#" class="sticky-bar-icon-btn top" id="topScrollBtn" onclick="scrollToTop(); return false;" title="맨 위로">
             ↑
         </a>
-        <a href="tel:02-1234-5678" class="floating-btn phone" title="전화하기">
+        <a href="tel:010-7231-0459" class="sticky-bar-icon-btn phone" title="전화하기">
             📞
         </a>
-        <a href="#" class="floating-btn kakao" onclick="openKakao(); return false;" title="카카오톡 상담">
-            💬
+    </div>
+
+    <!-- 모바일 하단 띠지 -->
+    <div class="mobile-sticky-bar">
+        <div class="mobile-sticky-bar-container">
+            <div class="mobile-sticky-bar-left">
+                <a href="http://pf.kakao.com/_inbpn/chat" target="_blank">
+                    <span style="font-size: 20px;">💬</span>
+                    <span>카톡상담</span>
+                </a>
+            </div>
+            <div class="mobile-sticky-bar-right">
+                <a href="#contact" onclick="scrollToContact(); return false;">
+                    <span style="font-size: 20px;">📋</span>
+                    <span>1:1상담신청 ></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모바일 띠지 위 아이콘 -->
+    <div class="mobile-sticky-bar-icons">
+        <a href="#" class="mobile-sticky-bar-icon-btn top" id="mobileTopScrollBtn" onclick="scrollToTop(); return false;" title="맨 위로">
+            ↑
         </a>
-        <a href="#" class="floating-btn instagram" onclick="openInstagram(); return false;" title="인스타그램">
-            📷
+        <a href="tel:010-7231-0459" class="mobile-sticky-bar-icon-btn phone" title="전화하기">
+            📞
         </a>
     </div>
 
@@ -939,6 +1504,8 @@
             const headerHeight = header ? header.offsetHeight : 80;
             const firstPcImage = heroSection ? heroSection.querySelector('.section-image.pc:first-of-type') : null;
             const firstMobileImage = heroSection ? heroSection.querySelector('.section-image.mobile:first-of-type') : null;
+            const menuBtn = document.querySelector('.menu-btn');
+            const consultationSection = document.querySelector('.consultation-section');
             
             if (window.scrollY > 50) {
                 header.classList.add('scrolled');
@@ -967,6 +1534,38 @@
                 if (firstMobileImage) {
                     firstMobileImage.classList.add('overlay-header');
                     firstMobileImage.style.marginTop = '-' + headerHeight + 'px';
+                }
+            }
+
+            // 실시간상담신청 또는 문의하기 섹션에 도달했는지 확인 (데스크탑만)
+            if (menuBtn && window.innerWidth > 768) {
+                const consultationSection = document.querySelector('.consultation-section');
+                const contactSection = document.querySelector('.contact-section');
+                let shouldAddBg = false;
+                
+                // 실시간상담신청 섹션 확인
+                if (consultationSection) {
+                    const consultationTop = consultationSection.getBoundingClientRect().top;
+                    const consultationBottom = consultationSection.getBoundingClientRect().bottom;
+                    if (consultationTop <= headerHeight && consultationBottom > 0) {
+                        shouldAddBg = true;
+                    }
+                }
+                
+                // 문의하기 섹션 확인
+                if (contactSection) {
+                    const contactTop = contactSection.getBoundingClientRect().top;
+                    const contactBottom = contactSection.getBoundingClientRect().bottom;
+                    if (contactTop <= headerHeight && contactBottom > 0) {
+                        shouldAddBg = true;
+                    }
+                }
+                
+                // 두 섹션 중 하나라도 화면에 보이면 MENU 버튼 배경색 추가
+                if (shouldAddBg) {
+                    menuBtn.classList.add('dark-bg');
+                } else {
+                    menuBtn.classList.remove('dark-bg');
                 }
             }
         });
@@ -1044,6 +1643,36 @@
                 }
             });
 
+            // 탕감률 슬라이더 섹션
+            const discountSliderSection = document.querySelector('.discount-slider-section');
+            if (discountSliderSection) {
+                observer.observe(discountSliderSection);
+            }
+
+            // 모바일 카드 자동 전환
+            function initMobileCardSlider() {
+                const cardWrapper = document.getElementById('discountCardWrapper');
+                if (!cardWrapper) return;
+
+                const cards = cardWrapper.querySelectorAll('.discount-card');
+                if (cards.length === 0) return;
+
+                let currentIndex = 0;
+                const totalCards = cards.length;
+
+                function showNextCard() {
+                    currentIndex = (currentIndex + 1) % totalCards;
+                    const translateX = -currentIndex * 100;
+                    cardWrapper.style.transform = `translateX(${translateX}%)`;
+                }
+
+                // 2초마다 다음 카드로 전환
+                setInterval(showNextCard, 2000);
+            }
+
+            // 초기화
+            initMobileCardSlider();
+
             // 실시간 상담 섹션
             const consultationSection = document.querySelector('.consultation-section');
             if (consultationSection) {
@@ -1063,7 +1692,7 @@
             }
         });
 
-        // 플로팅 버튼 기능
+        // 띠지 위 아이콘 기능
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -1071,26 +1700,64 @@
             });
         }
 
-        function openKakao() {
-            // 카카오톡 채널 링크 (실제 링크로 변경 필요)
-            window.open('https://pf.kakao.com/_your_channel_id', '_blank');
+        function scrollToContact() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
 
-        function openInstagram() {
-            // 인스타그램 링크 (실제 링크로 변경 필요)
-            window.open('https://www.instagram.com/your_account', '_blank');
+        // 하단 띠 폼 제출 처리
+        function handleStickySubmit() {
+            const name = document.getElementById('sticky_name').value;
+            const phone = document.getElementById('sticky_phone').value;
+            const job = document.getElementById('sticky_job').value;
+            const income = document.getElementById('sticky_income').value;
+            const debt = document.getElementById('sticky_debt').value;
+            const privacy = document.getElementById('sticky_privacy').checked;
+
+            if (!name || !phone || !job || !income || !debt) {
+                alert('모든 항목을 입력해주세요.');
+                return;
+            }
+
+            if (!privacy) {
+                alert('정보 수집 동의에 체크해주세요.');
+                return;
+            }
+
+            alert('상담 신청이 완료되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+            
+            // 폼 초기화
+            document.getElementById('sticky_name').value = '';
+            document.getElementById('sticky_phone').value = '';
+            document.getElementById('sticky_job').value = '';
+            document.getElementById('sticky_income').value = '';
+            document.getElementById('sticky_debt').value = '';
+            document.getElementById('sticky_privacy').checked = false;
         }
 
         // 스크롤 시 Top 버튼 표시/숨김
         window.addEventListener('scroll', () => {
-            const topBtn = document.querySelector('.floating-btn.top');
+            const topBtn = document.getElementById('topScrollBtn');
             if (topBtn) {
                 if (window.scrollY > 300) {
-                    topBtn.style.opacity = '1';
-                    topBtn.style.visibility = 'visible';
+                    topBtn.classList.add('show');
                 } else {
-                    topBtn.style.opacity = '0';
-                    topBtn.style.visibility = 'hidden';
+                    topBtn.classList.remove('show');
+                }
+            }
+
+            // 모바일 TOP 버튼
+            const mobileTopBtn = document.getElementById('mobileTopScrollBtn');
+            if (mobileTopBtn) {
+                if (window.scrollY > 300) {
+                    mobileTopBtn.classList.add('show');
+                } else {
+                    mobileTopBtn.classList.remove('show');
                 }
             }
         });
