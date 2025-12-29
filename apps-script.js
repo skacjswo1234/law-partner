@@ -11,6 +11,20 @@ function doPost(e) {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     var postData = (e && e.parameter) ? e.parameter : {};
     
+    // 헤더 배열 정의
+    var expectedHeaders = [
+      "제출일시",
+      "이름",
+      "전화번호",
+      "직업",
+      "채무금액",
+      "상담가능시간",
+      "연체여부"
+    ];
+    
+    // 시트 헤더 확인 및 자동 설정
+    ensureSheetHeaders(sheet, expectedHeaders);
+    
     // 현재 시간
     var timestamp = new Date();
     
@@ -161,7 +175,59 @@ function onFormSubmit(e) {
   }
 }
 
-// 시트 헤더 자동 설정 함수 (한 번만 실행하면 됩니다)
+// 시트 헤더 확인 및 자동 설정 함수
+function ensureSheetHeaders(sheet, expectedHeaders) {
+  try {
+    var lastRow = sheet.getLastRow();
+    var needsHeader = false;
+    
+    // 시트가 비어있거나 헤더가 없는 경우
+    if (lastRow === 0) {
+      needsHeader = true;
+    } else {
+      // 1행의 헤더 확인
+      var existingHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+      
+      // 헤더가 없거나 개수가 맞지 않거나 내용이 다른 경우
+      if (existingHeaders.length !== expectedHeaders.length) {
+        needsHeader = true;
+      } else {
+        // 각 헤더가 일치하는지 확인
+        for (var i = 0; i < expectedHeaders.length; i++) {
+          if (existingHeaders[i] !== expectedHeaders[i]) {
+            needsHeader = true;
+            break;
+          }
+        }
+      }
+    }
+    
+    // 헤더가 필요한 경우 설정
+    if (needsHeader) {
+      // 기존 헤더가 있으면 덮어쓰기, 없으면 새로 생성
+      sheet.getRange(1, 1, 1, expectedHeaders.length).setValues([expectedHeaders]);
+      
+      // 헤더 행 스타일 설정
+      var headerRange = sheet.getRange(1, 1, 1, expectedHeaders.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#4285f4");
+      headerRange.setFontColor("#ffffff");
+      
+      // 열 너비 자동 조정
+      for (var i = 1; i <= expectedHeaders.length; i++) {
+        sheet.autoResizeColumn(i);
+      }
+      
+      Logger.log("시트 헤더가 자동으로 설정되었습니다.");
+    }
+    
+  } catch (error) {
+    Logger.log("헤더 설정 오류: " + error.toString());
+    // 오류가 발생해도 계속 진행
+  }
+}
+
+// 시트 헤더 수동 설정 함수 (한 번만 실행하면 됩니다)
 function setupSheetHeaders() {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -177,19 +243,7 @@ function setupSheetHeaders() {
       "연체여부"
     ];
     
-    // 1행에 헤더 설정
-    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
-    
-    // 헤더 행 스타일 설정 (선택사항)
-    var headerRange = sheet.getRange(1, 1, 1, headers.length);
-    headerRange.setFontWeight("bold");
-    headerRange.setBackground("#4285f4");
-    headerRange.setFontColor("#ffffff");
-    
-    // 열 너비 자동 조정
-    for (var i = 1; i <= headers.length; i++) {
-      sheet.autoResizeColumn(i);
-    }
+    ensureSheetHeaders(sheet, headers);
     
     Logger.log("시트 헤더가 성공적으로 설정되었습니다.");
     return "시트 헤더 설정 완료!";
