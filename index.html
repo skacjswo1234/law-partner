@@ -609,13 +609,24 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
             font-family: inherit;
+            background-color: #fff;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
         }
 
         .form-group textarea {
@@ -624,9 +635,33 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #030530;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .radio-label input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .radio-label span {
+            color: #333;
         }
 
         .submit-btn {
@@ -892,7 +927,8 @@
             flex: 1;
         }
 
-        .sticky-bar-input-row input {
+        .sticky-bar-input-row input,
+        .sticky-bar-input-row select {
             width: 100%;
             padding: 14px 16px;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -904,7 +940,17 @@
             min-height: 48px;
         }
 
-        .sticky-bar-input-row input:focus {
+        .sticky-bar-input-row select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .sticky-bar-input-row input:focus,
+        .sticky-bar-input-row select:focus {
             outline: none;
             border-color: #FFD700;
             background: white;
@@ -912,6 +958,26 @@
 
         .sticky-bar-input-row input::placeholder {
             color: #999;
+        }
+
+        .sticky-bar-input-row .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .sticky-bar-input-row .radio-label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .sticky-bar-input-row .radio-label input[type="radio"] {
+            width: auto;
+            margin-right: 6px;
+            cursor: pointer;
         }
 
         .sticky-bar-button-wrapper {
@@ -936,20 +1002,29 @@
         }
 
         .sticky-bar-submit-btn {
-            padding: 12px 30px;
-            background: #FFD700;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #0d0d1f;
             border: none;
-            border-radius: 5px;
-            font-size: 14px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
             white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            min-width: 140px;
         }
 
         .sticky-bar-submit-btn:hover {
-            background: #FFA500;
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .sticky-bar-submit-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
         }
 
         .sticky-bar-contact {
@@ -1478,15 +1553,45 @@
                 </div>
                 <div class="form-group">
                     <label for="job">직업 *</label>
-                    <input type="text" id="job" name="job" required aria-required="true" placeholder="직업을 입력해주세요">
-                </div>
-                <div class="form-group">
-                    <label for="income">월소득 *</label>
-                    <input type="text" id="income" name="income" required aria-required="true" placeholder="월소득을 입력해주세요">
+                    <select id="job" name="job" required aria-required="true">
+                        <option value="">선택해주세요</option>
+                        <option value="직장인">직장인</option>
+                        <option value="자영업자">자영업자</option>
+                        <option value="프리랜서">프리랜서</option>
+                        <option value="알바">알바</option>
+                        <option value="사업소득">사업소득</option>
+                        <option value="무직">무직</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="debt">채무금액 *</label>
-                    <input type="text" id="debt" name="debt" required aria-required="true" placeholder="채무금액을 입력해주세요">
+                    <select id="debt" name="debt" required aria-required="true">
+                        <option value="">선택해주세요</option>
+                        <option value="1000만원~3000만원">1000만원~3000만원</option>
+                        <option value="3000-5000만원">3000-5000만원</option>
+                        <option value="5000-8000만원">5000-8000만원</option>
+                        <option value="8000만원 이상">8000만원 이상</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="consultation_time">상담 가능시간 *</label>
+                    <select id="consultation_time" name="consultation_time" required aria-required="true">
+                        <option value="">선택해주세요</option>
+                        <option value="09-11시">09-11시</option>
+                        <option value="11-13시">11-13시</option>
+                        <option value="13-15시">13-15시</option>
+                        <option value="15-17시">15-17시</option>
+                        <option value="17-19시">17-19시</option>
+                        <option value="19-21시">19-21시</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="overdue">연체여부 *</label>
+                    <select id="overdue" name="overdue" required aria-required="true">
+                        <option value="">선택해주세요</option>
+                        <option value="O">O (연체 중)</option>
+                        <option value="X">X (연체 없음)</option>
+                    </select>
                 </div>
                 <button type="submit" class="submit-btn" aria-label="상담 신청하기 버튼">상담 신청하기</button>
             </form>
@@ -1542,13 +1647,42 @@
                             <input type="tel" id="sticky_phone" name="sticky_phone" placeholder="연락처를 입력해주세요" inputmode="tel">
                         </div>
                         <div class="sticky-bar-input-row">
-                            <input type="text" id="sticky_job" name="sticky_job" placeholder="직업 입력">
+                            <select id="sticky_job" name="sticky_job">
+                                <option value="">직업 선택</option>
+                                <option value="직장인">직장인</option>
+                                <option value="자영업자">자영업자</option>
+                                <option value="프리랜서">프리랜서</option>
+                                <option value="알바">알바</option>
+                                <option value="사업소득">사업소득</option>
+                                <option value="무직">무직</option>
+                            </select>
                         </div>
                         <div class="sticky-bar-input-row">
-                            <input type="text" id="sticky_income" name="sticky_income" placeholder="월소득 입력">
+                            <select id="sticky_debt" name="sticky_debt">
+                                <option value="">채무금액 선택</option>
+                                <option value="1000만원~3000만원">1000만원~3000만원</option>
+                                <option value="3000-5000만원">3000-5000만원</option>
+                                <option value="5000-8000만원">5000-8000만원</option>
+                                <option value="8000만원 이상">8000만원 이상</option>
+                            </select>
                         </div>
                         <div class="sticky-bar-input-row">
-                            <input type="text" id="sticky_debt" name="sticky_debt" placeholder="채무금액 입력">
+                            <select id="sticky_consultation_time" name="sticky_consultation_time">
+                                <option value="">상담시간 선택</option>
+                                <option value="09-11시">09-11시</option>
+                                <option value="11-13시">11-13시</option>
+                                <option value="13-15시">13-15시</option>
+                                <option value="15-17시">15-17시</option>
+                                <option value="17-19시">17-19시</option>
+                                <option value="19-21시">19-21시</option>
+                            </select>
+                        </div>
+                        <div class="sticky-bar-input-row">
+                            <select id="sticky_overdue" name="sticky_overdue">
+                                <option value="">연체여부 선택</option>
+                                <option value="O">O (연체 중)</option>
+                                <option value="X">X (연체 없음)</option>
+                            </select>
                         </div>
                     </div>
                     <div class="sticky-bar-button-wrapper">
@@ -1780,8 +1914,9 @@
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
                 job: document.getElementById('job').value,
-                income: document.getElementById('income').value,
-                debt: document.getElementById('debt').value
+                debt: document.getElementById('debt').value,
+                consultation_time: document.getElementById('consultation_time').value,
+                overdue: document.getElementById('overdue').value
             };
             
             submitToGoogleSheet(formData, event.target);
@@ -2068,11 +2203,12 @@
             const name = document.getElementById('sticky_name').value;
             const phone = document.getElementById('sticky_phone').value;
             const job = document.getElementById('sticky_job').value;
-            const income = document.getElementById('sticky_income').value;
             const debt = document.getElementById('sticky_debt').value;
+            const consultation_time = document.getElementById('sticky_consultation_time').value;
+            const overdue = document.getElementById('sticky_overdue').value;
             const privacy = document.getElementById('sticky_privacy').checked;
 
-            if (!name || !phone || !job || !income || !debt) {
+            if (!name || !phone || !job || !debt || !consultation_time || !overdue) {
                 alert('모든 항목을 입력해주세요.');
                 return;
             }
@@ -2086,8 +2222,9 @@
                 name: name,
                 phone: phone,
                 job: job,
-                income: income,
-                debt: debt
+                debt: debt,
+                consultation_time: consultation_time,
+                overdue: overdue
             };
             
             submitToGoogleSheet(formData, null);
@@ -2096,8 +2233,9 @@
             document.getElementById('sticky_name').value = '';
             document.getElementById('sticky_phone').value = '';
             document.getElementById('sticky_job').value = '';
-            document.getElementById('sticky_income').value = '';
             document.getElementById('sticky_debt').value = '';
+            document.getElementById('sticky_consultation_time').value = '';
+            document.getElementById('sticky_overdue').value = '';
             document.getElementById('sticky_privacy').checked = false;
         }
 
