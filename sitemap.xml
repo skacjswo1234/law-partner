@@ -14,9 +14,9 @@
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
-            <image:loc>https://lawmariel.co.kr/partner-logo.png</image:loc>
-            <image:title>법무법인 파트너 로고</image:title>
-            <image:caption>채무조정, 개인회생, 신용회복 전문 법률서비스</image:caption>
+            <image:loc>https://lawmariel.co.kr/logo.png</image:loc>
+            <image:title>법률사무소 태윤 로고</image:title>
+            <image:caption>법률사무소 태윤 - 채무조정, 개인회생, 신용회복 전문 법률서비스</image:caption>
         </image:image>
     </url>
     

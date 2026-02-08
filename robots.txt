@@ -1,4 +1,4 @@
-# robots.txt for 법무법인 파트너
+# robots.txt for 법률사무소 태윤
 # https://lawmariel.co.kr/
 
 # 모든 검색 엔진 허용
