@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>법무법인 파트너 | 상품 홍보페이지</title>
+    <meta name="description" content="법무법인 파트너 상품 홍보페이지 - 채무조정, 개인회생, 신용회복 전문 법률상담">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px 0;
+            line-height: 1.6;
+        }
+
+        /* 740px 고정 컨테이너 */
+        .landing-container {
+            width: 740px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        /* 테이블 기반 레이아웃 */
+        .landing-table {
+            width: 740px;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .landing-table td {
+            padding: 0;
+            margin: 0;
+            vertical-align: top;
+        }
+
+        /* 통이미지 스타일 */
+        .full-image {
+            width: 740px;
+            height: auto;
+            display: block;
+            border: 0;
+        }
+
+        /* 이미지맵을 위한 이미지 스타일 */
+        .image-map-img {
+            width: 740px;
+            height: auto;
+            display: block;
+            border: 0;
+        }
+
+        /* 신청 버튼 고정 영역 (Rolling 고정) */
+        .fixed-button-area {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 740px;
+            background-color: rgba(13, 13, 31, 0.95);
+            padding: 15px 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* 신청 버튼 스타일 */
+        .apply-btn {
+            padding: 15px 40px;
+            background: #FFD700;
+            color: #0d0d1f;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+        }
+
+        .apply-btn:hover {
+            background: #FFA500;
+        }
+
+        .apply-btn.secondary {
+            background: #FEE500;
+            color: #000000;
+        }
+
+        .apply-btn.secondary:hover {
+            background: #FDD835;
+        }
+
+        /* 폼 영역 (신청 페이지) */
+        .form-section {
+            padding: 40px 20px;
+            background-color: #ffffff;
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 24px;
+            color: #030530;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #030530;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #030530;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #040638;
+        }
+
+        .form-group.privacy-consent label.privacy-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .form-group.privacy-consent input[type="checkbox"] {
+            width: auto;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* 성공 모달 */
+        .success-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .success-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+
+        .success-modal-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #4285f4 0%, #34a853 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            color: white;
+            animation: scaleIn 0.5s ease 0.2s both;
+        }
+
+        .success-modal-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #030530;
+            margin-bottom: 15px;
+        }
+
+        .success-modal-message {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .success-modal-button {
+            background: linear-gradient(135deg, #030530 0%, #4285f4 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .success-modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(3, 5, 48, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        /* 하단 여백 (고정 버튼을 위한 공간) */
+        .bottom-spacer {
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 740px 고정 컨테이너 -->
+    <div class="landing-container">
+        <!-- 테이블 기반 레이아웃 -->
+        <table class="landing-table" cellpadding="0" cellspacing="0" border="0">
+            <!-- 섹션 1: 메인 배너 (통이미지 예시) -->
+            <tr>
+                <td>
+                    <img src="images/pc/h-1.png" alt="법무법인 파트너 메인 배너" class="full-image">
+                    <!-- 또는 이미지맵을 사용할 경우:
+                    <img src="images/pc/h-1.png" alt="법무법인 파트너 메인 배너" class="image-map-img" usemap="#mainbanner">
+                    <map name="mainbanner">
+                        <area shape="rect" coords="100,200,300,250" href="#apply" alt="상담 신청">
+                    </map>
+                    -->
+                </td>
+            </tr>
+
+            <!-- 섹션 2: 상품 소개 (통이미지 예시) -->
+            <tr>
+                <td>
+                    <img src="images/pc/h-2.png" alt="법무법인 파트너 서비스 소개" class="full-image">
+                </td>
+            </tr>
+
+            <!-- 섹션 3: 상품 특징 (통이미지 예시) -->
+            <tr>
+                <td>
+                    <img src="images/pc/h-3.png" alt="법무법인 파트너 전문 변호사 상담" class="full-image">
+                </td>
+            </tr>
+
+            <!-- 섹션 4: 프로세스 (통이미지 예시) -->
+            <tr>
+                <td>
+                    <img src="images/pc/h-4.png" alt="법무법인 파트너 상담 프로세스" class="full-image">
+                </td>
+            </tr>
+
+            <!-- 섹션 5: 성공 사례 (통이미지 예시) -->
+            <tr>
+                <td>
+                    <img src="images/pc/h-5.png" alt="법무법인 파트너 성공 사례" class="full-image">
+                </td>
+            </tr>
+
+            <!-- 섹션 6: 신청 폼 -->
+            <tr>
+                <td>
+                    <div class="form-section" id="apply">
+                        <h2 class="form-title">상담 신청하기</h2>
+                        <form class="contact-form" name="contact-form" onsubmit="handleSubmit(event)">
+                            <div class="form-group">
+                                <label for="name">이름 *</label>
+                                <input type="text" id="name" name="name" required placeholder="이름을 입력해주세요">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">전화번호 *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="연락처를 입력해주세요">
+                            </div>
+                            <div class="form-group">
+                                <label for="job">직업 *</label>
+                                <input type="text" id="job" name="job" required placeholder="직업을 입력해주세요">
+                            </div>
+                            <div class="form-group privacy-consent">
+                                <label class="privacy-label" for="privacy">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    개인정보 수집·이용에 동의합니다 *
+                                </label>
+                            </div>
+                            <button type="submit" class="submit-btn">상담 신청하기</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 하단 여백 (고정 버튼을 위한 공간) -->
+            <tr>
+                <td>
+                    <div class="bottom-spacer"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Rolling 고정 신청 버튼 영역 -->
+    <div class="fixed-button-area">
+        <a href="#apply" class="apply-btn" onclick="scrollToApply(); return false;">상담 신청하기</a>
+        <a href="tel:010-7231-0459" class="apply-btn secondary">전화 상담</a>
+    </div>
+
+    <!-- 성공 모달 -->
+    <div class="success-modal" id="successModal">
+        <div class="success-modal-content">
+            <div class="success-modal-icon">✓</div>
+            <h2 class="success-modal-title">상담 신청 완료</h2>
+            <p class="success-modal-message">
+                상담 신청이 성공적으로 접수되었습니다.<br>
+                빠른 시일 내에 연락드리겠습니다.
+            </p>
+            <button class="success-modal-button" onclick="closeSuccessModal()">확인</button>
+        </div>
+    </div>
+
+    <script>
+        // 폼 제출 처리
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                job: document.getElementById('job').value,
+                privacy: document.getElementById('privacy').checked ? '동의' : ''
+            };
+            
+            submitToGoogleSheet(formData, event.target);
+        }
+        
+        // 구글 시트로 데이터 전송
+        function submitToGoogleSheet(formData, formElement) {
+            const webAppUrl = 'https://script.google.com/macros/s/AKfycbzST23_b2Wv6nYyXsqk-ZCQnzQUAKWe3JUVWDC2C2yTL0oFrY6gl87o-PjgJEUO4uCRzQ/exec';
+            
+            const params = new URLSearchParams();
+            Object.keys(formData).forEach(key => {
+                params.append(key, formData[key]);
+            });
+            
+            fetch(webAppUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: params.toString()
+            })
+            .then(() => {
+                showSuccessModal();
+                if (formElement) {
+                    formElement.reset();
+                }
+            })
+            .catch(error => {
+                console.error('오류:', error);
+                alert('상담 신청 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+            });
+        }
+        
+        // 성공 모달 표시
+        function showSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // 성공 모달 닫기
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        // 모달 배경 클릭 시 닫기
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('successModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeSuccessModal();
+                }
+            });
+        });
+
+        // 신청 섹션으로 스크롤
+        function scrollToApply() {
+            const applySection = document.getElementById('apply');
+            if (applySection) {
+                applySection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // 740px 고정 컨테이너 중앙 정렬 (작은 화면에서도)
+        window.addEventListener('resize', function() {
+            const container = document.querySelector('.landing-container');
+            const fixedButton = document.querySelector('.fixed-button-area');
+            if (window.innerWidth < 740) {
+                container.style.width = '100%';
+                fixedButton.style.width = '100%';
+                fixedButton.style.left = '0';
+                fixedButton.style.transform = 'none';
+            } else {
+                container.style.width = '740px';
+                fixedButton.style.width = '740px';
+                fixedButton.style.left = '50%';
+                fixedButton.style.transform = 'translateX(-50%)';
+            }
+        });
+
+        // 초기 로드 시 화면 크기 확인
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.landing-container');
+            const fixedButton = document.querySelector('.fixed-button-area');
+            if (window.innerWidth < 740) {
+                container.style.width = '100%';
+                fixedButton.style.width = '100%';
+                fixedButton.style.left = '0';
+                fixedButton.style.transform = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
