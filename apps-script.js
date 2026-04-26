@@ -17,6 +17,7 @@ function doPost(e) {
       "이름",
       "전화번호",
       "직업",
+      "상담가능시간",
       "정보수집동의"
     ];
     
@@ -32,6 +33,7 @@ function doPost(e) {
       postData.name || "",
       postData.phone || "",
       postData.job || "",
+      postData.consultation_time || "",
       postData.privacy || ""
     ];
     
@@ -62,7 +64,7 @@ function sendEmailNotification(rowData) {
     var email = "bbong1019@gmail.com";
     var subject = "[법무법인 파트너] 새 문의가 접수되었습니다 [나이스]";
     
-    var headers = ["제출일시", "이름", "전화번호", "직업", "정보수집동의"];
+    var headers = ["제출일시", "이름", "전화번호", "직업", "상담가능시간", "정보수집동의"];
     
     var bodyLines = [];
     bodyLines.push("새로운 상담 신청이 접수되었습니다.");
@@ -234,6 +236,7 @@ function setupSheetHeaders() {
       "이름",
       "전화번호",
       "직업",
+      "상담가능시간",
       "정보수집동의"
     ];
     
