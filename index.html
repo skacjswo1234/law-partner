@@ -548,6 +548,64 @@
             }
         }
 
+        /* 실제 결정문 사례 섹션 */
+        .decision-cases-section {
+            background: #ffffff;
+            padding: 20px 0 50px;
+        }
+
+        .decision-cases-container {
+            max-width: 1400px;
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .decision-cases-title {
+            text-align: center;
+            color: #030530;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Paperlogy', 'Gmarket Sans', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 28px;
+        }
+
+        .decision-cases-track {
+            display: flex;
+            gap: 18px;
+            width: max-content;
+            animation: decisionCasesRight 24s linear infinite;
+        }
+
+        .decision-cases-track:hover {
+            animation-play-state: paused;
+        }
+
+        .decision-case-item {
+            width: 280px;
+            flex: 0 0 auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+            background: #fff;
+        }
+
+        .decision-case-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes decisionCasesRight {
+            0% {
+                transform: translateX(calc(-50% - 9px));
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
         /* 모바일 카드 섹션 */
         .discount-card-section {
             display: none;
@@ -1360,6 +1418,23 @@
                 border-radius: 8px;
             }
 
+            .decision-cases-section {
+                padding: 10px 0 36px;
+            }
+
+            .decision-cases-title {
+                font-size: 24px;
+                margin-bottom: 18px;
+            }
+
+            .decision-cases-track {
+                gap: 12px;
+            }
+
+            .decision-case-item {
+                width: 190px;
+            }
+
             .section-title {
                 font-size: 24px;
                 margin-bottom: 30px;
@@ -1654,6 +1729,23 @@
                 </div>
             </div>
         </div>
+        <section class="decision-cases-section" aria-label="실제 결정문 사례">
+            <div class="decision-cases-container">
+                <h2 class="decision-cases-title">실제 결정문 사례</h2>
+                <div class="decision-cases-track">
+                    <div class="decision-case-item"><img src="images/success/1.webp" alt="실제 결정문 사례 1"></div>
+                    <div class="decision-case-item"><img src="images/success/2.webp" alt="실제 결정문 사례 2"></div>
+                    <div class="decision-case-item"><img src="images/success/3.webp" alt="실제 결정문 사례 3"></div>
+                    <div class="decision-case-item"><img src="images/success/4.webp" alt="실제 결정문 사례 4"></div>
+                    <div class="decision-case-item"><img src="images/success/5.webp" alt="실제 결정문 사례 5"></div>
+                    <div class="decision-case-item"><img src="images/success/1.webp" alt="실제 결정문 사례 1"></div>
+                    <div class="decision-case-item"><img src="images/success/2.webp" alt="실제 결정문 사례 2"></div>
+                    <div class="decision-case-item"><img src="images/success/3.webp" alt="실제 결정문 사례 3"></div>
+                    <div class="decision-case-item"><img src="images/success/4.webp" alt="실제 결정문 사례 4"></div>
+                    <div class="decision-case-item"><img src="images/success/5.webp" alt="실제 결정문 사례 5"></div>
+                </div>
+            </div>
+        </section>
         <img src="images/pc/h-2.png" alt="법률사무소 태윤 서비스 소개 - 채무조정 개인회생 신용회복 법률상담" class="section-image pc">
         <img src="images/mob/h-2-m.png" alt="법률사무소 태윤 서비스 소개 - 채무조정 개인회생 신용회복 법률상담" class="section-image mobile">
         <img src="images/pc/h-3.png" alt="법률사무소 태윤 전문 변호사 상담 - 채무 문제 해결 법률서비스" class="section-image pc">
