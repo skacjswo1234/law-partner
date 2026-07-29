@@ -606,6 +606,90 @@
             }
         }
 
+        .certificate-section {
+            background: #f7f8fb;
+            padding: 50px 20px 60px;
+        }
+
+        .certificate-container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .certificate-title {
+            text-align: center;
+            color: #030530;
+            font-size: 32px;
+            font-weight: bold;
+            font-family: 'Paperlogy', 'Gmarket Sans', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .certificate-subtitle {
+            text-align: center;
+            color: #4a4a5a;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            font-family: 'Gmarket Sans', 'Malgun Gothic', '맑은 고딕', sans-serif;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: start;
+        }
+
+        .certificate-item {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(3, 5, 48, 0.1);
+        }
+
+        .certificate-item img {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: zoom-in;
+        }
+
+        .certificate-caption {
+            padding: 14px 16px 16px;
+            text-align: center;
+            color: #030530;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Gmarket Sans', 'Malgun Gothic', '맑은 고딕', sans-serif;
+        }
+
+        .certificate-lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            cursor: zoom-out;
+        }
+
+        .certificate-lightbox.show {
+            display: flex;
+        }
+
+        .certificate-lightbox img {
+            max-width: min(920px, 100%);
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+        }
+
         /* 모바일 카드 섹션 */
         .discount-card-section {
             display: none;
@@ -1504,6 +1588,31 @@
                 width: 190px;
             }
 
+            .certificate-section {
+                padding: 36px 16px 44px;
+            }
+
+            .certificate-title {
+                font-size: 24px;
+            }
+
+            .certificate-subtitle {
+                font-size: 14px;
+                margin-bottom: 22px;
+            }
+
+            .certificate-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                max-width: 420px;
+                margin: 0 auto;
+            }
+
+            .certificate-caption {
+                font-size: 14px;
+                padding: 12px 14px 14px;
+            }
+
             .section-title {
                 font-size: 24px;
                 margin-bottom: 30px;
@@ -1815,6 +1924,25 @@
                 </div>
             </div>
         </section>
+        <section class="certificate-section" aria-label="대한변호사협회 전문분야 등록증서">
+            <div class="certificate-container">
+                <h2 class="certificate-title">전문분야 등록증서</h2>
+                <p class="certificate-subtitle">대한변호사협회 도산 전문분야 등록 · 김호제 변호사</p>
+                <div class="certificate-grid">
+                    <figure class="certificate-item">
+                        <img src="images/certificates/kba-cover.webp" alt="대한변호사협회 전문분야 등록증서 표지" loading="lazy" onclick="openCertificateLightbox(this.src, this.alt)">
+                        <figcaption class="certificate-caption">대한변호사협회</figcaption>
+                    </figure>
+                    <figure class="certificate-item">
+                        <img src="images/certificates/specialty-certificate.webp" alt="김호제 변호사 도산 전문분야 등록증서" loading="lazy" onclick="openCertificateLightbox(this.src, this.alt)">
+                        <figcaption class="certificate-caption">전문분야 등록증서 (도산)</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <div class="certificate-lightbox" id="certificateLightbox" onclick="closeCertificateLightbox()" aria-hidden="true">
+            <img id="certificateLightboxImg" src="" alt="">
+        </div>
         <img src="images/pc/h-2.png" alt="법률사무소 태윤 서비스 소개 - 채무조정 개인회생 신용회복 법률상담" class="section-image pc">
         <img src="images/mob/h-2-m.png" alt="법률사무소 태윤 서비스 소개 - 채무조정 개인회생 신용회복 법률상담" class="section-image mobile">
         <img src="images/pc/h-3.png" alt="법률사무소 태윤 전문 변호사 상담 - 채무 문제 해결 법률서비스" class="section-image pc">
@@ -2306,6 +2434,27 @@
             const modal = document.getElementById('successModal');
             modal.classList.remove('show');
             document.body.style.overflow = ''; // 스크롤 복원
+        }
+
+        function openCertificateLightbox(src, alt) {
+            const lightbox = document.getElementById('certificateLightbox');
+            const img = document.getElementById('certificateLightboxImg');
+            if (!lightbox || !img) return;
+            img.src = src;
+            img.alt = alt || '';
+            lightbox.classList.add('show');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertificateLightbox() {
+            const lightbox = document.getElementById('certificateLightbox');
+            const img = document.getElementById('certificateLightboxImg');
+            if (!lightbox) return;
+            lightbox.classList.remove('show');
+            lightbox.setAttribute('aria-hidden', 'true');
+            if (img) img.src = '';
+            document.body.style.overflow = '';
         }
         
         // 모달 배경 클릭 시 닫기
