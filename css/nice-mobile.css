@@ -46,6 +46,10 @@
     padding: 44px 18px 48px !important;
   }
 
+  .nice-partner-section--top {
+    padding-top: 40px !important;
+  }
+
   .nice-partner-section::before {
     background-position: center center !important;
     transform: none !important;
