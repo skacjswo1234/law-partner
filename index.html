@@ -49,6 +49,7 @@
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/GmarketSans@latest/font.css">
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -242,16 +243,57 @@
             position: relative;
         }
 
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
         .logo {
             height: 120px;
             text-decoration: none;
             display: inline-block;
+            flex-shrink: 0;
         }
 
         .logo img {
             height: 100%;
             width: auto;
             display: block;
+        }
+
+        .header-partner {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            padding-left: 14px;
+            border-left: 1px solid rgba(255, 255, 255, 0.28);
+        }
+
+        .header-partner-logo {
+            height: 36px;
+            width: auto;
+            max-width: 180px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .partner-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            padding: 7px 12px;
+            border: 1px solid #d4af37;
+            color: #d4af37;
+            background: rgba(1, 2, 24, 0.55);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1;
         }
 
         .mobile-menu-btn {
@@ -445,7 +487,9 @@
 
         @media (max-width: 768px) {
             .hero-highlight-inner {
-                font-size: 26px;
+                font-size: 22px;
+                flex-wrap: wrap;
+                gap: 8px;
             }
         }
 
@@ -453,6 +497,678 @@
             .hero-highlight-em {
                 animation: none;
             }
+
+            .nice-chart-fill {
+                transition: none;
+            }
+
+            .nice-chart-section .nice-chart-fill {
+                width: var(--chart-width);
+            }
+        }
+
+        /* 나이스신용평가 파트너 — 히어로 아래 독립 섹션 */
+        .nice-partner-section {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 80px 20px 84px;
+            overflow: hidden;
+            isolation: isolate;
+            background: transparent;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nice-partner-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: url('images/partners/nice-partner-bg.jpg') right center / cover no-repeat;
+            transform: scale(1.02);
+            filter: brightness(1.12) contrast(1.1);
+        }
+
+        .nice-partner-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: linear-gradient(90deg, rgba(8, 10, 22, 0.88) 0%, rgba(8, 10, 22, 0.72) 42%, rgba(8, 10, 22, 0.28) 72%, rgba(8, 10, 22, 0.18) 100%);
+        }
+
+        .nice-partner-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            text-align: left;
+            display: grid;
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nice-partner-copy {
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .nice-partner-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            min-width: 0;
+            max-width: 100%;
+        }
+
+        .nice-partner-seal {
+            width: 160px;
+            height: 160px;
+            margin: 0;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.5));
+        }
+
+        .nice-partner-brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .nice-partner-brand img {
+            height: 44px;
+            width: auto;
+            max-width: 230px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nice-partner-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 14px;
+            border-left: 3px solid #d4af37;
+            border-top: none;
+            border-right: none;
+            border-bottom: none;
+            color: #f0d78c;
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            background: transparent;
+            backdrop-filter: none;
+        }
+
+        .nice-partner-kicker {
+            margin: 0 0 10px;
+            color: rgba(255, 255, 255, 0.82);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            line-height: 1.45;
+            text-transform: none;
+        }
+
+        .nice-partner-title {
+            margin: 0 0 22px;
+            color: #ffffff;
+            font-family: 'Paperlogy', 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            line-height: 1.25;
+            text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .nice-partner-title .em {
+            color: #d4af37;
+            display: inline;
+        }
+
+        .nice-partner-highlights {
+            list-style: none;
+            margin: 0 0 26px;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nice-partner-highlights li {
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(240, 215, 140, 0.35);
+            backdrop-filter: blur(4px);
+            box-sizing: border-box;
+        }
+
+        .nice-partner-highlights strong {
+            display: inline;
+            margin: 0 6px 0 0;
+            color: #f0d78c;
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .nice-partner-highlights span {
+            display: inline;
+            color: rgba(255, 255, 255, 0.88);
+            font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+
+        .nice-partner-highlights span br {
+            display: none;
+        }
+
+        .nice-partner-points {
+            list-style: none;
+            margin: 0 0 28px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            text-align: left;
+            border-left: 2px solid rgba(212, 175, 55, 0.45);
+        }
+
+        .nice-partner-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 0 16px 20px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.94);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+            line-height: 1.5;
+            backdrop-filter: none;
+            position: relative;
+        }
+
+        .nice-partner-points li:last-child {
+            border-bottom: none;
+        }
+
+        .nice-partner-points li::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d4af37;
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+        }
+
+        .nice-partner-points .point-num {
+            flex: 0 0 auto;
+            min-width: auto;
+            color: #d4af37;
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            padding-top: 3px;
+        }
+
+        .nice-partner-points .point-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .nice-partner-points .point-text strong {
+            color: #f0d78c;
+            font-weight: 700;
+        }
+
+        .nice-partner-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 54px;
+            padding: 0 32px;
+            background: linear-gradient(135deg, #c9a227 0%, #f0d78c 50%, #d4af37 100%);
+            color: #1a1405;
+            text-decoration: none;
+            font-family: 'Paperlogy', 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            box-shadow: 0 10px 28px rgba(212, 175, 55, 0.35);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nice-partner-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px rgba(212, 175, 55, 0.45);
+            color: #1a1405;
+        }
+
+        .nice-partner-visual-note {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.78);
+            font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 15px;
+            line-height: 1.55;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        /* 파트너십이 고객에게 주는 의미 섹션 — 에디토리얼/타임라인형 */
+        .nice-trust-section {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 76px 20px 80px;
+            overflow: hidden;
+            isolation: isolate;
+            background: transparent;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nice-trust-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: url('images/partners/nice-trust-bg.jpg') center 30% / cover no-repeat;
+            filter: brightness(1.15) contrast(1.08) saturate(1.05);
+        }
+
+        .nice-trust-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(180deg, rgba(42, 28, 18, 0.55) 0%, rgba(24, 22, 28, 0.62) 45%, rgba(16, 18, 24, 0.78) 100%),
+                linear-gradient(115deg, rgba(20, 18, 24, 0.5) 0%, rgba(20, 18, 24, 0.15) 60%, rgba(20, 18, 24, 0.45) 100%);
+        }
+
+        .nice-trust-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .nice-trust-head {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 36px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(240, 215, 140, 0.35);
+        }
+
+        .nice-trust-kicker {
+            margin: 0;
+            writing-mode: horizontal-tb;
+            transform: none;
+            color: #f0d78c;
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+        }
+
+        .nice-trust-title {
+            margin: 0 0 12px;
+            color: #ffffff;
+            font-family: 'Paperlogy', 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.28;
+        }
+
+        .nice-trust-desc {
+            margin: 0;
+            max-width: 680px;
+            color: rgba(255, 255, 255, 0.84);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 18px;
+            line-height: 1.7;
+            letter-spacing: -0.02em;
+        }
+
+        .nice-trust-grid {
+            list-style: none;
+            margin: 0 0 34px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            text-align: left;
+            counter-reset: trust-step;
+        }
+
+        .nice-trust-grid li {
+            display: grid;
+            grid-template-columns: 64px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+            padding: 22px 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.18);
+            backdrop-filter: none;
+            counter-increment: trust-step;
+        }
+
+        .nice-trust-grid li:last-child {
+            border-bottom: none;
+        }
+
+        .nice-trust-index {
+            width: 56px;
+            height: 56px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(240, 215, 140, 0.55);
+            border-radius: 50%;
+            color: #f0d78c;
+            background: rgba(0, 0, 0, 0.22);
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .nice-trust-index::before {
+            content: counter(trust-step, decimal-leading-zero);
+        }
+
+        .nice-trust-body {
+            min-width: 0;
+            padding-top: 4px;
+        }
+
+        .nice-trust-grid .trust-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .nice-trust-grid .trust-label::before {
+            content: none;
+        }
+
+        .nice-trust-grid p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.88);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 17px;
+            line-height: 1.7;
+            letter-spacing: -0.02em;
+        }
+
+        .nice-trust-grid li::before {
+            content: none;
+        }
+
+        .nice-compare {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            text-align: left;
+        }
+
+        .nice-compare-box {
+            padding: 22px 20px;
+            backdrop-filter: blur(6px);
+        }
+
+        .nice-compare-box.normal {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .nice-compare-box.partner {
+            background: rgba(212, 175, 55, 0.14);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+
+        .nice-compare-box h3 {
+            margin: 0 0 12px;
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .nice-compare-box.normal h3 {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nice-compare-box.partner h3 {
+            color: #f0d78c;
+        }
+
+        .nice-compare-box ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nice-compare-box li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.88);
+            font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            letter-spacing: -0.02em;
+        }
+
+        .nice-compare-box li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .nice-compare-box li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 신뢰 지표 그래프 섹션 */
+        .nice-chart-section {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 80px 20px 88px;
+            overflow: hidden;
+            isolation: isolate;
+            background: transparent;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .nice-chart-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+            background: url('images/partners/nice-chart-bg.jpg') center 40% / cover no-repeat;
+            filter: brightness(1.18) contrast(1.08) saturate(0.95);
+        }
+
+        .nice-chart-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(180deg, rgba(28, 32, 42, 0.35) 0%, rgba(22, 26, 36, 0.48) 55%, rgba(18, 20, 28, 0.62) 100%),
+                linear-gradient(90deg, rgba(20, 24, 34, 0.42) 0%, rgba(20, 24, 34, 0.18) 55%, rgba(20, 24, 34, 0.35) 100%);
+        }
+
+        .nice-chart-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .nice-chart-brand {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .nice-chart-brand img {
+            height: 40px;
+            width: auto;
+            max-width: 210px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .nice-chart-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 14px;
+            border: 1px solid #d4af37;
+            color: #f0d78c;
+            background: rgba(20, 24, 34, 0.45);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .nice-chart-kicker {
+            margin: 0 0 12px;
+            color: #d4af37;
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+        }
+
+        .nice-chart-title {
+            margin: 0 0 14px;
+            color: #ffffff;
+            font-family: 'Paperlogy', 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.3;
+            text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+        }
+
+        .nice-chart-desc {
+            margin: 0 auto 42px;
+            max-width: 680px;
+            color: rgba(255, 255, 255, 0.82);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 19px;
+            line-height: 1.7;
+            letter-spacing: -0.02em;
+        }
+
+        .nice-chart-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            text-align: left;
+        }
+
+        .nice-chart-item {
+            padding: 8px 0;
+        }
+
+        .nice-chart-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 10px;
+        }
+
+        .nice-chart-label {
+            color: #ffffff;
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+        }
+
+        .nice-chart-value {
+            color: #d4af37;
+            font-family: 'Paperlogy', 'Pretendard', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .nice-chart-track {
+            width: 100%;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+
+        .nice-chart-fill {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #8a6d1f 0%, #d4af37 55%, #f0d78c 100%);
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
+            transition: width 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .nice-chart-section.is-visible .nice-chart-fill {
+            width: var(--chart-width);
+        }
+
+        .nice-chart-note {
+            margin: 28px 0 0;
+            color: rgba(255, 255, 255, 0.6);
+            font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            letter-spacing: -0.02em;
         }
 
         /* 헤더가 투명할 때 히어로 이미지가 헤더 뒤에 보이도록 */
@@ -637,9 +1353,11 @@
 
         .certificate-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: 1fr;
             gap: 24px;
             align-items: start;
+            max-width: 520px;
+            margin: 0 auto;
         }
 
         .certificate-item {
@@ -1061,12 +1779,45 @@
         }
 
         .footer-logo {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .footer-logo img {
             height: 70px;
             width: auto;
+            display: block;
+        }
+
+        .footer-partner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-partner-logo {
+            height: 28px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .footer-partner-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            border: 1px solid #d4af37;
+            color: #f0d78c;
+            background: rgba(212, 175, 55, 0.12);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            white-space: nowrap;
         }
 
         .footer-section p,
@@ -1242,11 +1993,79 @@
 
         .sticky-bar-icon {
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .sticky-bar-icon img {
+        .sticky-bar-icon > img {
             height: 80px;
             width: auto;
+            display: block;
+        }
+
+        .sticky-bar-brand-divider {
+            width: 1px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.22);
+            flex-shrink: 0;
+        }
+
+        .sticky-bar-partner {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .sticky-bar-partner-logo {
+            height: 28px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .sticky-bar-partner-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px 10px;
+            border: 1px solid #d4af37;
+            color: #f0d78c;
+            background: rgba(212, 175, 55, 0.12);
+            font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1280px) {
+            .sticky-bar-icon {
+                gap: 8px;
+            }
+
+            .sticky-bar-icon > img {
+                height: 64px;
+            }
+
+            .sticky-bar-brand-divider {
+                height: 44px;
+            }
+
+            .sticky-bar-partner-logo {
+                height: 22px;
+                max-width: 120px;
+            }
+
+            .sticky-bar-partner-badge {
+                padding: 3px 8px;
+                font-size: 11px;
+            }
         }
 
         .sticky-bar-form {
@@ -1618,12 +2437,8 @@
                 margin-bottom: 30px;
             }
 
-            .logo {
-                height: 64px;
-            }
-
             header {
-                padding: 18px 0;
+                padding: 14px 0;
             }
 
             .hero-section {
@@ -1712,6 +2527,44 @@
                 height: 60px;
             }
 
+            .mobile-sticky-bar-partner {
+                flex: 1.15;
+                background: #0a0a18;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 0 10px;
+                border-right: 1px solid rgba(255, 255, 255, 0.12);
+                box-sizing: border-box;
+                min-width: 0;
+            }
+
+            .mobile-sticky-bar-partner-logo {
+                height: 18px;
+                width: auto;
+                max-width: 96px;
+                object-fit: contain;
+                display: block;
+                flex-shrink: 1;
+            }
+
+            .mobile-sticky-bar-partner-badge {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 3px 6px;
+                border: 1px solid #d4af37;
+                color: #f0d78c;
+                font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: -0.02em;
+                line-height: 1.1;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
             .mobile-sticky-bar-left {
                 flex: 1;
                 background: #FEE500;
@@ -1744,7 +2597,7 @@
 
             .mobile-sticky-bar-right a {
                 color: white;
-                font-size: 16px;
+                font-size: 15px;
                 font-weight: bold;
                 text-decoration: none;
                 width: 100%;
@@ -1752,6 +2605,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                gap: 4px;
             }
 
             /* 모바일 띠지 위 아이콘 */
@@ -1807,14 +2661,22 @@
             }
         }
     </style>
+    <!-- 나이스 섹션 모바일 전용 (인라인 CSS보다 뒤에 로드) -->
+    <link rel="stylesheet" href="css/nice-mobile.css">
 </head>
 <body>
     <!-- 헤더 -->
     <header>
         <div class="header-container">
-            <a href="#home" class="logo" aria-label="법률사무소 태윤 홈으로 이동">
-                <img src="logo.png" alt="법률사무소 태윤 로고 - 채무조정, 개인회생, 신용회복 전문 법률서비스">
-            </a>
+            <div class="header-brand">
+                <a href="#home" class="logo" aria-label="법률사무소 태윤 홈으로 이동">
+                    <img src="logo.png" alt="법률사무소 태윤 로고 - 채무조정, 개인회생, 신용회복 전문 법률서비스">
+                </a>
+                <div class="header-partner" aria-label="나이스신용평가 공식파트너">
+                    <img src="images/partners/nice-logo-white.png" alt="NICE신용평가" class="header-partner-logo">
+                    <span class="partner-badge">공식파트너</span>
+                </div>
+            </div>
             <button class="menu-btn" onclick="toggleSideMenu()">
                 MENU <span>☰</span>
             </button>
@@ -1850,6 +2712,54 @@
         <h1 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">법률사무소태윤 - 채무조정, 개인회생, 신용회복 전문 법률서비스</h1>
         <img src="images/pc/h-1.png" alt="법률사무소 태윤 메인 배너 - 채무조정 개인회생 신용회복 전문 법률서비스" class="section-image pc">
         <img src="images/mob/h-1-m.png" alt="법률사무소 태윤 메인 배너 - 채무조정 개인회생 신용회복 전문 법률서비스" class="section-image mobile">
+
+        <!-- 히어로 아래 신규 독립 섹션: 나이스신용평가 공식 파트너 -->
+        <section class="nice-partner-section" id="nice-partner" aria-label="나이스신용평가 공식 파트너">
+            <div class="nice-partner-inner">
+                <div class="nice-partner-copy">
+                    <div class="nice-partner-brand">
+                        <img src="images/partners/nice-logo-white.png" alt="NICE신용평가">
+                        <span class="nice-partner-badge">공식파트너</span>
+                    </div>
+                    <p class="nice-partner-kicker">나이스신용평가 · 채무조정/개인회생 부문</p>
+                    <h2 class="nice-partner-title"><span class="em">정식 파트너사</span> 지정</h2>
+                    <ul class="nice-partner-highlights" aria-label="핵심 차별점">
+                        <li>
+                            <strong>단독 지정</strong>
+                            <span>채무조정·개인회생 단독 파트너</span>
+                        </li>
+                        <li>
+                            <strong>도산 전문</strong>
+                            <span>대한변호사협회 전문분야 등록</span>
+                        </li>
+                        <li>
+                            <strong>투명 수임</strong>
+                            <span>명확한 비용 · 분할 납부</span>
+                        </li>
+                    </ul>
+                    <ul class="nice-partner-points">
+                        <li>
+                            <span class="point-num">01</span>
+                            <span class="point-text">다년간 역량 검토 후, 채무조정·개인회생 <strong>단독 파트너사</strong>로 지정</span>
+                        </li>
+                        <li>
+                            <span class="point-num">02</span>
+                            <span class="point-text">현실적인 상담으로 <strong>명확한 솔루션</strong> 제안</span>
+                        </li>
+                        <li>
+                            <span class="point-num">03</span>
+                            <span class="point-text"><strong>투명한 수임료</strong> 제시 · 분할 납부 가능</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="nice-partner-cta">지금 바로 무료 상담 신청</a>
+                </div>
+                <div class="nice-partner-visual">
+                    <img src="images/partners/nice-solo-seal.png" alt="나이스신용평가 단독파트너 인장" class="nice-partner-seal">
+                    <p class="nice-partner-visual-note">나이스신용평가가 검증한<br>채무조정·개인회생 단독 파트너</p>
+                </div>
+            </div>
+        </section>
+
         <section id="services"></section>
         <section class="hero-highlight-section" aria-label="탕감 안내 문구">
             <div class="hero-highlight-inner">
@@ -1930,11 +2840,7 @@
                 <p class="certificate-subtitle">대한변호사협회 도산 전문분야 등록 · 김호제 변호사</p>
                 <div class="certificate-grid">
                     <figure class="certificate-item">
-                        <img src="images/certificates/kba-cover.webp" alt="대한변호사협회 전문분야 등록증서 표지" loading="lazy" onclick="openCertificateLightbox(this.src, this.alt)">
-                        <figcaption class="certificate-caption">대한변호사협회</figcaption>
-                    </figure>
-                    <figure class="certificate-item">
-                        <img src="images/certificates/specialty-certificate.webp" alt="김호제 변호사 도산 전문분야 등록증서" loading="lazy" onclick="openCertificateLightbox(this.src, this.alt)">
+                        <img src="images/certificates/specialty-certificate.jpg" alt="김호제 변호사 도산 전문분야 등록증서" loading="lazy" onclick="openCertificateLightbox(this.src, this.alt)">
                         <figcaption class="certificate-caption">전문분야 등록증서 (도산)</figcaption>
                     </figure>
                 </div>
@@ -1943,6 +2849,61 @@
         <div class="certificate-lightbox" id="certificateLightbox" onclick="closeCertificateLightbox()" aria-hidden="true">
             <img id="certificateLightboxImg" src="" alt="">
         </div>
+
+        <!-- 파트너십이 고객에게 주는 의미 (전문분야 등록증서 이후) -->
+        <section class="nice-trust-section" aria-label="나이스 파트너십이 고객에게 주는 의미">
+            <div class="nice-trust-inner">
+                <div class="nice-trust-head">
+                    <p class="nice-trust-kicker">파트너십의 의미</p>
+                    <div>
+                        <h2 class="nice-trust-title">이 파트너십이<br>고객에게 주는 차이</h2>
+                        <p class="nice-trust-desc">나이스신용평가의 검증을 거친 파트너로서,<br>단순한 상담이 아닌 신뢰 가능한 해결 기준을 제시합니다.</p>
+                    </div>
+                </div>
+                <ul class="nice-trust-grid">
+                    <li>
+                        <span class="nice-trust-index" aria-hidden="true"></span>
+                        <div class="nice-trust-body">
+                            <span class="trust-label">검증된 전문성</span>
+                            <p>다년간 역량 검토를 통과한 단독 파트너로, 채무조정·개인회생 분야에 대한 전문성을 공인받았습니다.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="nice-trust-index" aria-hidden="true"></span>
+                        <div class="nice-trust-body">
+                            <span class="trust-label">현실적인 설계</span>
+                            <p>무리한 약속 대신, 현재 소득·부채 상황을 기준으로 실행 가능한 변제 설계를 안내합니다.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="nice-trust-index" aria-hidden="true"></span>
+                        <div class="nice-trust-body">
+                            <span class="trust-label">투명한 진행</span>
+                            <p>수임료와 진행 과정을 처음부터 명확히 안내하고, 부담을 낮출 수 있도록 분할 납부를 지원합니다.</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nice-compare" aria-label="일반 상담과 파트너 상담 비교">
+                    <div class="nice-compare-box normal">
+                        <h3>일반 상담</h3>
+                        <ul>
+                            <li>막연한 가능성 위주 안내</li>
+                            <li>비용·절차 설명이 불명확</li>
+                            <li>상황별 설계가 약함</li>
+                        </ul>
+                    </div>
+                    <div class="nice-compare-box partner">
+                        <h3>나이스 파트너 상담</h3>
+                        <ul>
+                            <li>검증된 기준의 현실적 솔루션</li>
+                            <li>투명한 수임료·분할 납부 안내</li>
+                            <li>도산 전문 중심의 맞춤 설계</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <img src="images/pc/h-2.png" alt="법률사무소 태윤 서비스 소개 - 채무조정 개인회생 신용회복 법률상담" class="section-image pc">
         <img src="images/mob/h-2-m.png" alt="법률사무소 태윤 서비스 소개 - 채무조정 개인회생 신용회복 법률상담" class="section-image mobile">
         <img src="images/pc/h-3.png" alt="법률사무소 태윤 전문 변호사 상담 - 채무 문제 해결 법률서비스" class="section-image pc">
@@ -1951,6 +2912,59 @@
         <img src="images/mob/h-4-m.png" alt="법률사무소 태윤 상담 프로세스 - 365일 24시간 상담 가능" class="section-image mobile">
         <img src="images/pc/h-5.png" alt="법률사무소 태윤 성공 사례 - 채무조정 개인회생 성공 후기" class="section-image pc">
         <img src="images/mob/h-5-m.png" alt="법률사무소 태윤 성공 사례 - 채무조정 개인회생 성공 후기" class="section-image mobile">
+
+        <!-- 신뢰 지표 그래프 섹션 (성공 사례 이후) -->
+        <section class="nice-chart-section" id="nice-chart" aria-label="파트너 신뢰 지표">
+            <div class="nice-chart-inner">
+                <div class="nice-chart-brand">
+                    <img src="images/partners/nice-logo-white.png" alt="NICE신용평가">
+                    <span class="nice-chart-badge">공식파트너 지정</span>
+                </div>
+                <p class="nice-chart-kicker">신뢰 지표</p>
+                <h2 class="nice-chart-title">파트너 신뢰 지표</h2>
+                <p class="nice-chart-desc">나이스신용평가 파트너 기준과 상담 운영 원칙을 수치로 확인하세요.</p>
+                <ul class="nice-chart-list">
+                    <li class="nice-chart-item">
+                        <div class="nice-chart-meta">
+                            <span class="nice-chart-label">파트너 역량 검증 충족도</span>
+                            <span class="nice-chart-value">98%</span>
+                        </div>
+                        <div class="nice-chart-track" aria-hidden="true">
+                            <span class="nice-chart-fill" style="--chart-width: 98%"></span>
+                        </div>
+                    </li>
+                    <li class="nice-chart-item">
+                        <div class="nice-chart-meta">
+                            <span class="nice-chart-label">상담 솔루션 명확성</span>
+                            <span class="nice-chart-value">96%</span>
+                        </div>
+                        <div class="nice-chart-track" aria-hidden="true">
+                            <span class="nice-chart-fill" style="--chart-width: 96%"></span>
+                        </div>
+                    </li>
+                    <li class="nice-chart-item">
+                        <div class="nice-chart-meta">
+                            <span class="nice-chart-label">수임료 안내 투명성</span>
+                            <span class="nice-chart-value">97%</span>
+                        </div>
+                        <div class="nice-chart-track" aria-hidden="true">
+                            <span class="nice-chart-fill" style="--chart-width: 97%"></span>
+                        </div>
+                    </li>
+                    <li class="nice-chart-item">
+                        <div class="nice-chart-meta">
+                            <span class="nice-chart-label">재상담·추천 의향</span>
+                            <span class="nice-chart-value">94%</span>
+                        </div>
+                        <div class="nice-chart-track" aria-hidden="true">
+                            <span class="nice-chart-fill" style="--chart-width: 94%"></span>
+                        </div>
+                    </li>
+                </ul>
+                <p class="nice-chart-note">* 내부 상담·파트너 운영 기준 기반의 안내 지표이며, 실제 개인별 결과는 상황에 따라 달라질 수 있습니다.</p>
+            </div>
+        </section>
+
         <img src="images/pc/h-9.png" alt="법률사무소 태윤 법률서비스 안내 - 면책신청 압류해제 연체상담" class="section-image pc">
         <img src="images/mob/h-9-m.png" alt="법률사무소 태윤 법률서비스 안내 - 면책신청 압류해제 연체상담" class="section-image mobile">
         <img src="images/pc/h-10.png" alt="법률사무소 태윤 상담 신청 방법 - 온라인 상담 24시간 접수" class="section-image pc">
@@ -2031,6 +3045,10 @@
                     <div class="footer-logo">
                         <img src="logo.png" alt="법률사무소 태윤 로고 - 채무조정 개인회생 신용회복 전문 법률서비스">
                     </div>
+                    <div class="footer-partner" aria-label="나이스신용평가 공식파트너">
+                        <img src="images/partners/nice-logo-white.png" alt="NICE신용평가" class="footer-partner-logo">
+                        <span class="footer-partner-badge">공식파트너 지정</span>
+                    </div>
                     <p>고객의 권익을 최우선으로 생각하는<br>신뢰받는 법률 서비스를 제공합니다.</p>
                     <p>광고책임자: 김호제변호사</p>
                     <p>상호: 법률사무소 태윤</p>
@@ -2061,6 +3079,11 @@
             <div class="sticky-bar-wrapper">
                 <div class="sticky-bar-icon">
                     <img src="logo.png" alt="법률사무소 태윤 로고 - 채무조정 개인회생 신용회복 전문 법률서비스">
+                    <span class="sticky-bar-brand-divider" aria-hidden="true"></span>
+                    <div class="sticky-bar-partner" aria-label="나이스신용평가 공식파트너">
+                        <img src="images/partners/nice-logo-white.png" alt="NICE신용평가" class="sticky-bar-partner-logo">
+                        <span class="sticky-bar-partner-badge">공식파트너 지정</span>
+                    </div>
                 </div>
                 <div class="sticky-bar-form">
                     <div class="sticky-bar-title">
@@ -2147,6 +3170,10 @@
     <!-- 모바일 하단 띠지 -->
     <div class="mobile-sticky-bar">
         <div class="mobile-sticky-bar-container">
+            <div class="mobile-sticky-bar-partner" aria-label="나이스신용평가 공식파트너">
+                <img src="images/partners/nice-logo-white.png" alt="NICE신용평가" class="mobile-sticky-bar-partner-logo">
+                <span class="mobile-sticky-bar-partner-badge">공식파트너</span>
+            </div>
             <!-- 카톡 신청 부분 주석 처리
             <div class="mobile-sticky-bar-left">
                 <a href="http://pf.kakao.com/_inbpn/chat" target="_blank">카톡상담</a>
@@ -2626,6 +3653,20 @@
             const discountSliderSection = document.querySelector('.discount-slider-section');
             if (discountSliderSection) {
                 observer.observe(discountSliderSection);
+            }
+
+            // 신뢰 지표 그래프 애니메이션
+            const niceChartSection = document.querySelector('.nice-chart-section');
+            if (niceChartSection) {
+                const chartObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            chartObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.35 });
+                chartObserver.observe(niceChartSection);
             }
 
             // 모바일 카드 자동 전환

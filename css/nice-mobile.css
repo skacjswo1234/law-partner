@@ -1,0 +1,529 @@
+/* 나이스 파트너 관련 모바일 전용 스타일
+   index.html 인라인 CSS보다 뒤에 로드되어야 함 */
+
+@media (max-width: 768px) {
+  /* ===== 헤더 ===== */
+  .header-container {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .header-brand {
+    flex: 1;
+    min-width: 0;
+    gap: 6px;
+    overflow: hidden;
+  }
+
+  .logo {
+    height: 52px !important;
+  }
+
+  .header-partner {
+    gap: 4px;
+    padding-left: 6px;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .header-partner-logo {
+    height: 18px !important;
+    max-width: 88px !important;
+  }
+
+  .partner-badge {
+    padding: 3px 6px !important;
+    font-size: 9px !important;
+    border-width: 1px !important;
+  }
+
+  header {
+    padding: 14px 0 !important;
+  }
+
+  /* ===== 정식 파트너사 지정 ===== */
+  .nice-partner-section {
+    padding: 44px 18px 48px !important;
+  }
+
+  .nice-partner-section::before {
+    background-position: center center !important;
+    transform: none !important;
+    filter: brightness(1.05) contrast(1.05) !important;
+  }
+
+  .nice-partner-section::after {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 10, 22, 0.88) 0%,
+      rgba(8, 10, 22, 0.92) 100%
+    ) !important;
+  }
+
+  .nice-partner-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: 22px !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .nice-partner-copy {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .nice-partner-visual {
+    order: -1;
+    gap: 12px !important;
+    width: 100%;
+    align-items: center !important;
+  }
+
+  .nice-partner-seal {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0 auto !important;
+  }
+
+  .nice-partner-visual-note {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+
+  .nice-partner-brand {
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .nice-partner-brand img {
+    height: 34px !important;
+    max-width: min(180px, 60vw) !important;
+  }
+
+  .nice-partner-badge {
+    padding: 8px 12px !important;
+    border: 1px solid #d4af37 !important;
+    border-left: 1px solid #d4af37 !important;
+    font-size: 14px !important;
+  }
+
+  .nice-partner-kicker {
+    font-size: 16px !important;
+    margin-bottom: 8px !important;
+    letter-spacing: -0.01em !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  .nice-partner-title {
+    font-size: 30px !important;
+    margin-bottom: 18px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  .nice-partner-highlights {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .nice-partner-highlights li {
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 14px 16px !important;
+    text-align: center !important;
+  }
+
+  .nice-partner-highlights strong {
+    display: block !important;
+    margin: 0 0 6px !important;
+    font-size: 18px !important;
+  }
+
+  .nice-partner-highlights span {
+    display: block !important;
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+    word-break: keep-all;
+  }
+
+  .nice-partner-highlights span br {
+    display: none !important;
+  }
+
+  .nice-partner-points {
+    margin: 0 0 20px !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    border-left: none !important;
+    width: 100%;
+    text-align: center !important;
+  }
+
+  .nice-partner-points li {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding: 16px 12px !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    background: rgba(6, 10, 40, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    margin-bottom: 10px !important;
+  }
+
+  .nice-partner-points li:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .nice-partner-points li::before {
+    display: none !important;
+  }
+
+  .nice-partner-points .point-num {
+    font-size: 14px !important;
+    min-width: auto !important;
+    padding-top: 0 !important;
+  }
+
+  .nice-partner-points .point-text {
+    text-align: center !important;
+  }
+
+  .nice-partner-cta {
+    display: flex !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 52px !important;
+    padding: 0 16px !important;
+    font-size: 17px !important;
+    box-sizing: border-box;
+    margin: 0 auto !important;
+  }
+
+  /* ===== 파트너십의 의미 ===== */
+  .nice-trust-section {
+    padding: 44px 18px 48px !important;
+  }
+
+  .nice-trust-section::before {
+    background-position: center center !important;
+    filter: brightness(1.05) contrast(1.05) !important;
+  }
+
+  .nice-trust-section::after {
+    background: linear-gradient(
+      180deg,
+      rgba(24, 20, 18, 0.88) 0%,
+      rgba(16, 16, 20, 0.92) 100%
+    ) !important;
+  }
+
+  .nice-trust-inner {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .nice-trust-head {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    grid-template-columns: none !important;
+    gap: 12px !important;
+    margin-bottom: 22px !important;
+    padding-bottom: 18px !important;
+    text-align: center !important;
+  }
+
+  .nice-trust-kicker {
+    writing-mode: horizontal-tb !important;
+    transform: none !important;
+    font-size: 14px !important;
+    letter-spacing: 0.12em !important;
+    text-align: center !important;
+  }
+
+  .nice-trust-title {
+    font-size: 28px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  .nice-trust-desc {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  .nice-trust-desc br {
+    display: none !important;
+  }
+
+  .nice-trust-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    margin-bottom: 22px !important;
+    gap: 12px !important;
+  }
+
+  .nice-trust-grid li {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    grid-template-columns: none !important;
+    gap: 10px !important;
+    padding: 18px 14px !important;
+    background: rgba(0, 0, 0, 0.28) !important;
+    border: 1px solid rgba(240, 215, 140, 0.28) !important;
+    border-bottom: 1px solid rgba(240, 215, 140, 0.28) !important;
+    text-align: center !important;
+  }
+
+  .nice-trust-index {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 14px !important;
+    margin: 0 auto !important;
+  }
+
+  .nice-trust-body {
+    padding-top: 0 !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    width: 100%;
+  }
+
+  .nice-trust-grid .trust-label {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+    color: #fff !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  .nice-trust-grid p {
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  .nice-compare {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    margin-top: 8px !important;
+  }
+
+  .nice-compare-box {
+    padding: 18px 16px !important;
+    box-sizing: border-box;
+    text-align: center !important;
+  }
+
+  .nice-compare-box h3 {
+    font-size: 18px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+  }
+
+  .nice-compare-box ul {
+    text-align: center !important;
+  }
+
+  .nice-compare-box li {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding-left: 0 !important;
+    word-break: keep-all;
+  }
+
+  .nice-compare-box li::before {
+    display: none !important;
+  }
+
+  /* ===== 파트너 신뢰 지표 ===== */
+  .nice-chart-section {
+    padding: 44px 18px 48px !important;
+  }
+
+  .nice-chart-section::before {
+    background-position: center center !important;
+    filter: brightness(1.08) contrast(1.05) !important;
+  }
+
+  .nice-chart-section::after {
+    background: linear-gradient(
+      180deg,
+      rgba(22, 24, 32, 0.88) 0%,
+      rgba(18, 20, 28, 0.92) 100%
+    ) !important;
+  }
+
+  .nice-chart-inner {
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+
+  .nice-chart-brand {
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .nice-chart-brand img {
+    height: 32px !important;
+    max-width: min(180px, 55vw) !important;
+  }
+
+  .nice-chart-badge {
+    padding: 7px 12px !important;
+    font-size: 13px !important;
+  }
+
+  .nice-chart-kicker {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .nice-chart-title {
+    font-size: 28px !important;
+    word-break: keep-all;
+  }
+
+  .nice-chart-desc {
+    font-size: 16px !important;
+    margin-bottom: 24px !important;
+    word-break: keep-all;
+  }
+
+  .nice-chart-list {
+    gap: 18px !important;
+    text-align: left !important;
+  }
+
+  .nice-chart-meta {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+    gap: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .nice-chart-label {
+    font-size: 16px !important;
+    word-break: keep-all;
+  }
+
+  .nice-chart-value {
+    font-size: 24px !important;
+  }
+
+  .nice-chart-track {
+    height: 14px !important;
+  }
+
+  .nice-chart-note {
+    font-size: 13px !important;
+    margin-top: 20px !important;
+    text-align: center !important;
+    word-break: keep-all;
+  }
+
+  /* ===== 푸터 ===== */
+  .footer-partner {
+    gap: 8px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .footer-partner-logo {
+    height: 22px !important;
+    max-width: 130px !important;
+  }
+
+  .footer-partner-badge {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+  }
+
+  /* ===== 모바일 하단 고정 바 ===== */
+  .mobile-sticky-bar-partner {
+    flex: 1.2 !important;
+    gap: 6px !important;
+    padding: 0 8px !important;
+  }
+
+  .mobile-sticky-bar-partner-logo {
+    height: 16px !important;
+    max-width: 86px !important;
+  }
+
+  .mobile-sticky-bar-partner-badge {
+    font-size: 9px !important;
+    padding: 3px 5px !important;
+  }
+
+  .mobile-sticky-bar-right a {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-sticky-bar-partner-badge {
+    display: none !important;
+  }
+
+  .mobile-sticky-bar-partner {
+    flex: 0.9 !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .partner-badge {
+    display: none !important;
+  }
+
+  .header-partner {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+
+  .nice-partner-title {
+    font-size: 26px !important;
+  }
+
+  .nice-trust-title,
+  .nice-chart-title {
+    font-size: 25px !important;
+  }
+
+  .nice-partner-kicker,
+  .nice-trust-desc,
+  .nice-chart-desc {
+    font-size: 15px !important;
+  }
+
+  .nice-partner-points li,
+  .nice-trust-grid p,
+  .nice-compare-box li {
+    font-size: 15px !important;
+  }
+}
