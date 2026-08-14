@@ -464,35 +464,58 @@
     font-size: 11px !important;
   }
 
-  /* ===== 모바일 하단 고정 바 ===== */
-  .mobile-sticky-bar-partner {
-    flex: 1.2 !important;
+  /* ===== 모바일 전화 버튼: 나이스로고 + 전화상담 ===== */
+  .mobile-sticky-bar-right {
+    flex: 1 !important;
+  }
+
+  .mobile-sticky-bar-icon-btn.phone {
+    width: auto !important;
+    height: auto !important;
+    min-width: 132px !important;
+    border-radius: 14px !important;
+    padding: 10px 12px !important;
+    flex-direction: column !important;
     gap: 6px !important;
-    padding: 0 8px !important;
+    background: linear-gradient(160deg, #12122a 0%, #0d0d1f 100%) !important;
+    border: 1px solid rgba(212, 175, 55, 0.55) !important;
   }
 
-  .mobile-sticky-bar-partner-logo {
-    height: 16px !important;
-    max-width: 86px !important;
+  .mobile-phone-logo {
+    height: 18px !important;
+    max-width: 110px !important;
+    display: block !important;
   }
 
-  .mobile-sticky-bar-partner-badge {
-    font-size: 9px !important;
-    padding: 3px 5px !important;
-  }
-
-  .mobile-sticky-bar-right a {
-    font-size: 14px !important;
+  .mobile-phone-text {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 28px !important;
+    padding: 0 12px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
+    color: #fff !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
   }
 }
 
 @media (max-width: 360px) {
-  .mobile-sticky-bar-partner-badge {
-    display: none !important;
+  .mobile-sticky-bar-icon-btn.phone {
+    min-width: 118px !important;
+    padding: 8px 10px !important;
   }
 
-  .mobile-sticky-bar-partner {
-    flex: 0.9 !important;
+  .mobile-phone-logo {
+    height: 16px !important;
+    max-width: 96px !important;
+  }
+
+  .mobile-phone-text {
+    font-size: 12px !important;
+    min-height: 26px !important;
   }
 }
 

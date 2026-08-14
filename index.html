@@ -2527,65 +2527,6 @@
                 height: 60px;
             }
 
-            .mobile-sticky-bar-partner {
-                flex: 1.15;
-                background: #0a0a18;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                padding: 0 10px;
-                border-right: 1px solid rgba(255, 255, 255, 0.12);
-                box-sizing: border-box;
-                min-width: 0;
-            }
-
-            .mobile-sticky-bar-partner-logo {
-                height: 18px;
-                width: auto;
-                max-width: 96px;
-                object-fit: contain;
-                display: block;
-                flex-shrink: 1;
-            }
-
-            .mobile-sticky-bar-partner-badge {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                padding: 3px 6px;
-                border: 1px solid #d4af37;
-                color: #f0d78c;
-                font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
-                font-size: 10px;
-                font-weight: 700;
-                letter-spacing: -0.02em;
-                line-height: 1.1;
-                white-space: nowrap;
-                flex-shrink: 0;
-            }
-
-            .mobile-sticky-bar-left {
-                flex: 1;
-                background: #FEE500;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 0;
-            }
-
-            .mobile-sticky-bar-left a {
-                color: #000000;
-                font-size: 16px;
-                font-weight: bold;
-                text-decoration: none;
-                width: 100%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
             .mobile-sticky-bar-right {
                 flex: 1;
                 background: #0d0d1f;
@@ -2597,7 +2538,7 @@
 
             .mobile-sticky-bar-right a {
                 color: white;
-                font-size: 15px;
+                font-size: 16px;
                 font-weight: bold;
                 text-decoration: none;
                 width: 100%;
@@ -2605,17 +2546,17 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: 4px;
             }
 
             /* 모바일 띠지 위 아이콘 */
             .mobile-sticky-bar-icons {
                 position: fixed;
-                bottom: 70px;
-                right: 20px;
+                bottom: 72px;
+                right: 14px;
                 z-index: 1001;
                 display: flex;
                 flex-direction: column;
+                align-items: flex-end;
                 gap: 12px;
             }
 
@@ -2653,7 +2594,40 @@
             }
 
             .mobile-sticky-bar-icon-btn.phone {
+                width: auto;
+                height: auto;
+                min-width: 132px;
+                border-radius: 14px;
+                padding: 10px 12px;
+                flex-direction: column;
+                gap: 6px;
+                background: linear-gradient(160deg, #12122a 0%, #0d0d1f 100%);
+                border: 1px solid rgba(212, 175, 55, 0.55);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            }
+
+            .mobile-phone-logo {
+                height: 18px;
+                width: auto;
+                max-width: 110px;
+                object-fit: contain;
+                display: block;
+            }
+
+            .mobile-phone-text {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 28px;
+                padding: 0 12px;
+                border-radius: 999px;
                 background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+                color: #fff;
+                font-family: 'Pretendard', 'Paperlogy', 'Malgun Gothic', '맑은 고딕', sans-serif;
+                font-size: 13px;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                white-space: nowrap;
             }
 
             footer {
@@ -2713,49 +2687,56 @@
         <img src="images/pc/h-1.png" alt="법률사무소 태윤 메인 배너 - 채무조정 개인회생 신용회복 전문 법률서비스" class="section-image pc">
         <img src="images/mob/h-1-m.png" alt="법률사무소 태윤 메인 배너 - 채무조정 개인회생 신용회복 전문 법률서비스" class="section-image mobile">
 
-        <!-- 히어로 아래 신규 독립 섹션: 나이스신용평가 공식 파트너 -->
-        <section class="nice-partner-section" id="nice-partner" aria-label="나이스신용평가 공식 파트너">
-            <div class="nice-partner-inner">
-                <div class="nice-partner-copy">
-                    <div class="nice-partner-brand">
-                        <img src="images/partners/nice-logo-white.png" alt="NICE신용평가">
-                        <span class="nice-partner-badge">공식파트너</span>
+        <!-- 히어로 아래: 파트너십의 의미 -->
+        <section class="nice-trust-section" aria-label="나이스 파트너십이 고객에게 주는 의미">
+            <div class="nice-trust-inner">
+                <div class="nice-trust-head">
+                    <p class="nice-trust-kicker">파트너십의 의미</p>
+                    <div>
+                        <h2 class="nice-trust-title">이 파트너십이<br>고객에게 주는 차이</h2>
+                        <p class="nice-trust-desc">나이스신용평가의 검증을 거친 파트너로서,<br>단순한 상담이 아닌 신뢰 가능한 해결 기준을 제시합니다.</p>
                     </div>
-                    <p class="nice-partner-kicker">나이스신용평가 · 채무조정/개인회생 부문</p>
-                    <h2 class="nice-partner-title"><span class="em">정식 파트너사</span> 지정</h2>
-                    <ul class="nice-partner-highlights" aria-label="핵심 차별점">
-                        <li>
-                            <strong>단독 지정</strong>
-                            <span>채무조정·개인회생 단독 파트너</span>
-                        </li>
-                        <li>
-                            <strong>도산 전문</strong>
-                            <span>대한변호사협회 전문분야 등록</span>
-                        </li>
-                        <li>
-                            <strong>투명 수임</strong>
-                            <span>명확한 비용 · 분할 납부</span>
-                        </li>
-                    </ul>
-                    <ul class="nice-partner-points">
-                        <li>
-                            <span class="point-num">01</span>
-                            <span class="point-text">다년간 역량 검토 후, 채무조정·개인회생 <strong>단독 파트너사</strong>로 지정</span>
-                        </li>
-                        <li>
-                            <span class="point-num">02</span>
-                            <span class="point-text">현실적인 상담으로 <strong>명확한 솔루션</strong> 제안</span>
-                        </li>
-                        <li>
-                            <span class="point-num">03</span>
-                            <span class="point-text"><strong>투명한 수임료</strong> 제시 · 분할 납부 가능</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="nice-partner-cta">지금 바로 무료 상담 신청</a>
                 </div>
-                <div class="nice-partner-visual">
-                    <img src="images/partners/nice-solo-seal.png" alt="나이스신용평가 단독파트너 인장" class="nice-partner-seal">
-                    <p class="nice-partner-visual-note">나이스신용평가가 검증한<br>채무조정·개인회생 단독 파트너</p>
+                <ul class="nice-trust-grid">
+                    <li>
+                        <span class="nice-trust-index" aria-hidden="true"></span>
+                        <div class="nice-trust-body">
+                            <span class="trust-label">검증된 전문성</span>
+                            <p>다년간 역량 검토를 통과한 단독 파트너로, 채무조정·개인회생 분야에 대한 전문성을 공인받았습니다.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="nice-trust-index" aria-hidden="true"></span>
+                        <div class="nice-trust-body">
+                            <span class="trust-label">현실적인 설계</span>
+                            <p>무리한 약속 대신, 현재 소득·부채 상황을 기준으로 실행 가능한 변제 설계를 안내합니다.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="nice-trust-index" aria-hidden="true"></span>
+                        <div class="nice-trust-body">
+                            <span class="trust-label">투명한 진행</span>
+                            <p>수임료와 진행 과정을 처음부터 명확히 안내하고, 부담을 낮출 수 있도록 분할 납부를 지원합니다.</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nice-compare" aria-label="일반 상담과 파트너 상담 비교">
+                    <div class="nice-compare-box normal">
+                        <h3>일반 상담</h3>
+                        <ul>
+                            <li>막연한 가능성 위주 안내</li>
+                            <li>비용·절차 설명이 불명확</li>
+                            <li>상황별 설계가 약함</li>
+                        </ul>
+                    </div>
+                    <div class="nice-compare-box partner">
+                        <h3>나이스 파트너 상담</h3>
+                        <ul>
+                            <li>검증된 기준의 현실적 솔루션</li>
+                            <li>투명한 수임료·분할 납부 안내</li>
+                            <li>도산 전문 중심의 맞춤 설계</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2850,56 +2831,49 @@
             <img id="certificateLightboxImg" src="" alt="">
         </div>
 
-        <!-- 파트너십이 고객에게 주는 의미 (전문분야 등록증서 이후) -->
-        <section class="nice-trust-section" aria-label="나이스 파트너십이 고객에게 주는 의미">
-            <div class="nice-trust-inner">
-                <div class="nice-trust-head">
-                    <p class="nice-trust-kicker">파트너십의 의미</p>
-                    <div>
-                        <h2 class="nice-trust-title">이 파트너십이<br>고객에게 주는 차이</h2>
-                        <p class="nice-trust-desc">나이스신용평가의 검증을 거친 파트너로서,<br>단순한 상담이 아닌 신뢰 가능한 해결 기준을 제시합니다.</p>
+        <!-- 전문분야 등록증서 이후: 정식 파트너사 지정 -->
+        <section class="nice-partner-section" id="nice-partner" aria-label="나이스신용평가 공식 파트너">
+            <div class="nice-partner-inner">
+                <div class="nice-partner-copy">
+                    <div class="nice-partner-brand">
+                        <img src="images/partners/nice-logo-white.png" alt="NICE신용평가">
+                        <span class="nice-partner-badge">공식파트너</span>
                     </div>
+                    <p class="nice-partner-kicker">나이스신용평가 · 채무조정/개인회생 부문</p>
+                    <h2 class="nice-partner-title"><span class="em">정식 파트너사</span> 지정</h2>
+                    <ul class="nice-partner-highlights" aria-label="핵심 차별점">
+                        <li>
+                            <strong>단독 지정</strong>
+                            <span>채무조정·개인회생 단독 파트너</span>
+                        </li>
+                        <li>
+                            <strong>도산 전문</strong>
+                            <span>대한변호사협회 전문분야 등록</span>
+                        </li>
+                        <li>
+                            <strong>투명 수임</strong>
+                            <span>명확한 비용 · 분할 납부</span>
+                        </li>
+                    </ul>
+                    <ul class="nice-partner-points">
+                        <li>
+                            <span class="point-num">01</span>
+                            <span class="point-text">다년간 역량 검토 후, 채무조정·개인회생 <strong>단독 파트너사</strong>로 지정</span>
+                        </li>
+                        <li>
+                            <span class="point-num">02</span>
+                            <span class="point-text">현실적인 상담으로 <strong>명확한 솔루션</strong> 제안</span>
+                        </li>
+                        <li>
+                            <span class="point-num">03</span>
+                            <span class="point-text"><strong>투명한 수임료</strong> 제시 · 분할 납부 가능</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="nice-partner-cta">지금 바로 무료 상담 신청</a>
                 </div>
-                <ul class="nice-trust-grid">
-                    <li>
-                        <span class="nice-trust-index" aria-hidden="true"></span>
-                        <div class="nice-trust-body">
-                            <span class="trust-label">검증된 전문성</span>
-                            <p>다년간 역량 검토를 통과한 단독 파트너로, 채무조정·개인회생 분야에 대한 전문성을 공인받았습니다.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="nice-trust-index" aria-hidden="true"></span>
-                        <div class="nice-trust-body">
-                            <span class="trust-label">현실적인 설계</span>
-                            <p>무리한 약속 대신, 현재 소득·부채 상황을 기준으로 실행 가능한 변제 설계를 안내합니다.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="nice-trust-index" aria-hidden="true"></span>
-                        <div class="nice-trust-body">
-                            <span class="trust-label">투명한 진행</span>
-                            <p>수임료와 진행 과정을 처음부터 명확히 안내하고, 부담을 낮출 수 있도록 분할 납부를 지원합니다.</p>
-                        </div>
-                    </li>
-                </ul>
-                <div class="nice-compare" aria-label="일반 상담과 파트너 상담 비교">
-                    <div class="nice-compare-box normal">
-                        <h3>일반 상담</h3>
-                        <ul>
-                            <li>막연한 가능성 위주 안내</li>
-                            <li>비용·절차 설명이 불명확</li>
-                            <li>상황별 설계가 약함</li>
-                        </ul>
-                    </div>
-                    <div class="nice-compare-box partner">
-                        <h3>나이스 파트너 상담</h3>
-                        <ul>
-                            <li>검증된 기준의 현실적 솔루션</li>
-                            <li>투명한 수임료·분할 납부 안내</li>
-                            <li>도산 전문 중심의 맞춤 설계</li>
-                        </ul>
-                    </div>
+                <div class="nice-partner-visual">
+                    <img src="images/partners/nice-solo-seal.png" alt="나이스신용평가 단독파트너 인장" class="nice-partner-seal">
+                    <p class="nice-partner-visual-note">나이스신용평가가 검증한<br>채무조정·개인회생 단독 파트너</p>
                 </div>
             </div>
         </section>
@@ -3170,15 +3144,6 @@
     <!-- 모바일 하단 띠지 -->
     <div class="mobile-sticky-bar">
         <div class="mobile-sticky-bar-container">
-            <div class="mobile-sticky-bar-partner" aria-label="나이스신용평가 공식파트너">
-                <img src="images/partners/nice-logo-white.png" alt="NICE신용평가" class="mobile-sticky-bar-partner-logo">
-                <span class="mobile-sticky-bar-partner-badge">공식파트너</span>
-            </div>
-            <!-- 카톡 신청 부분 주석 처리
-            <div class="mobile-sticky-bar-left">
-                <a href="http://pf.kakao.com/_inbpn/chat" target="_blank">카톡상담</a>
-            </div>
-            -->
             <div class="mobile-sticky-bar-right">
                 <a href="#contact" onclick="scrollToContact(); return false;">1:1상담신청 ></a>
             </div>
@@ -3190,8 +3155,9 @@
         <a href="#" class="mobile-sticky-bar-icon-btn top" id="mobileTopScrollBtn" onclick="scrollToTop(); return false;" title="맨 위로">
             ↑
         </a>
-        <a href="tel:010-9102-7723" class="mobile-sticky-bar-icon-btn phone" title="전화하기">
-            📞
+        <a href="tel:010-9102-7723" class="mobile-sticky-bar-icon-btn phone" title="나이스신용평가 공식파트너 전화상담" aria-label="나이스신용평가 공식파트너 전화하기">
+            <img src="images/partners/nice-logo-white.png" alt="NICE신용평가" class="mobile-phone-logo">
+            <span class="mobile-phone-text">전화상담</span>
         </a>
     </div>
 
